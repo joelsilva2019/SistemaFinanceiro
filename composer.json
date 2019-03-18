@@ -1,0 +1,14 @@
+{
+    "name": "eti/composer-php",
+    "description": "Composer do sitema finaceiro",
+    "authors": [
+        {
+            "name": "Joel Silva",
+            "email": "joelsilvaesilva10@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "mpdf/mpdf": "^7.1"    
+    }
+}

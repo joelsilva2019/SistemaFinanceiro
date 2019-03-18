@@ -1,0 +1,393 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family: Arial;
+}
+.left_menu{
+    width: 200px;
+    background-color: #000;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
+.top{
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    font-size: 13px;
+}
+.container{
+    padding-left: 200px;
+}
+
+.company_name{
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    overflow: hidden;
+}
+.top_right{
+    float:right;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 40px;    
+}
+.top_right a{
+    text-decoration: none;
+    color: #fff;
+}
+.menu_area ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.menu_area li{
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+    font-size: 13px;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: 10px 14px;
+}
+.menu_area li a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+.menu_area li:hover{
+    background-color: #1f232a;
+}
+.menu_area li:nth-child(1){
+    background-image: url('../images/home.png');
+}
+.menu_area li:nth-child(2){
+    background-image: url('../images/clients.png');
+}
+.menu_area li:nth-child(3){
+    background-image: url('../images/sale.png');
+}
+.menu_area li:nth-child(4){
+    background-image: url('../images/inventory.png');
+}
+.menu_area li:nth-child(5){
+    background-image: url('../images/category.png');
+}
+.menu_area li:nth-child(6){
+    background-image: url('../images/purchase.png');
+}
+.menu_area li:nth-child(7){
+    background-image: url('../images/man-user.png');
+}
+.menu_area li:nth-child(8){
+    background-image: url('../images/key.png');
+}
+.menu_area li:nth-child(9){
+    background-image: url('../images/report.png');
+}
+.area{
+    padding: 15px;
+}
+.tab_area{
+    height: 40px;
+}
+.tab_item{
+    float: left;
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #cc0000;
+    background-color: #1f232a;
+    color: #fff;
+    cursor:pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.action_tab{
+    background-color: #FFF;
+    border-bottom: 1px solid #fff;
+    color: #000;
+}
+.tab_body{
+    display: none;
+}
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=number],
+select,textarea{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type=date]{
+    width: 80%;
+    padding: 5px;
+}
+
+input[type=submit],button,
+.button{
+    border:0;
+    height: 40px;
+    border-radius: 3px;
+    line-height: 40px;
+    background-color: #003366;
+    color:#fff;
+    font-size: 13px;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+}
+.button a{
+    text-decoration: none;
+    color: #fff;
+}
+.button_small{
+    height: 30px;
+    line-height: 30px;
+}
+textarea{
+    height: 100px;
+}
+table{
+    margin-top: 10px;
+}
+table th{
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    background-color: #1f232a;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+}
+table td{
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    background-color: #EEE;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+}
+.p_item{
+    height: 25px;
+    line-height: 25px;
+}
+.warn{
+    padding: 15px;
+    background-color: #eee;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+}
+.pagination{
+    margin-top: 30px;
+}
+.pag_item{
+    width: 30px;
+    height: 30px;
+    float: left;
+    border: 1px solid #000;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+} 
+.pag_item a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+.pag_select{
+    background-color: #1f232a;
+}
+
+.pag_select a{
+    color: #fff;
+}
+#search{
+    width: 100px;
+    float:right;
+    border-radius: 3px;
+    background-image: url('../images/search.png');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 5px;
+    padding-left: 30px;
+}
+.search_results{
+    width: 298px;
+    position: absolute;
+    background-color: #fff;
+    border:1px solid #ccc;
+    
+}
+
+.si{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.si a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+.si:hover{
+    background-color: #1f232a;
+    color: #fff;
+}
+.si a:hover{
+    color: #fff;
+}
+#client_name{
+    width: 300px;
+}
+
+.add_client{
+
+    height: 38px;
+    line-height: 38px;
+    
+}
+.input_prod{
+    width: 60px !important;
+}
+.report_item{
+    width: 150px;
+    height: 140px;
+    background-color:  #999999;
+    float: left;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+.report_item a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+.report_item:hover{
+    background-color: #1f232a;
+}
+.report_item a:hover{
+    color: #fff;
+}
+.report_filter{
+    width: 25%;
+    height: 150px;
+    text-align: center;
+    float: left;
+}
+.grid-1{
+    width: 33%;
+    float: left;
+}
+.grid-2{
+    width: 66%;
+    float: left;
+}
+
+.grid-3{
+    width: 100%;
+    float: left;
+}
+
+.db-grid-area{
+    background-color: #4169E1;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100px;
+    padding-left: 20px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.row1 .grid-1:nth-child(1) .db-grid-area{
+    margin-left: 0;
+}
+.row1 .grid-1:nth-child(3) .db-grid-area{
+    margin-right: 0;
+}
+.row2 .grid-2 .db-info{
+    margin-left: 0;
+}
+.row2 .grid-3 .db-info{
+    margin-left: 0;
+}
+.row2 .grid-1 .db-info{
+    margin-right: 0;
+}
+
+.db-area-count{
+    font-size: 28px;
+    padding-top: 24px;
+}
+.db-area-legend{
+    font-size: 14px;
+}
+
+.db-row{
+    clear: both;
+}
+.db-info{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.db-info-title{
+    height: 40px;
+    line-height: 40px;
+    font-size: 17px;
+    padding-left: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.db-info-body{
+    padding: 10px;
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
