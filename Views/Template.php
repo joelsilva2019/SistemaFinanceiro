@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
     <head>   
         <title><?php echo utf8_encode($viewData['company_name']); ?></title>

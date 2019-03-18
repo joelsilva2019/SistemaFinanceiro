@@ -42,7 +42,7 @@ class Inventory extends Model{
         public function searchInventoryByName($name, $id_company){
         
         $array = array();
-        $sql = $this->db->prepare("SELECT id, name, price FROM inventory WHERE name LIKE :name AND id_company = :id_company LIMIT 10");
+        $sql = $this->db->prepare("SELECT id, name, price, price_purchase FROM inventory WHERE name LIKE :name AND id_company = :id_company LIMIT 10");
         $sql->bindValue(':name', '%'.$name.'%');
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();
@@ -109,13 +109,14 @@ class Inventory extends Model{
         
     }
 
-    public function add($id_company,$id_category, $id_user, $name, $price, $quant, $min_quant){
+    public function add($id_company,$id_category, $id_user, $name, $price,$price_purchase, $quant, $min_quant){
         
-        $sql = $this->db->prepare("INSERT INTO inventory SET id_company = :id_company, id_category = :id_category, name = :name, price = :price, quant = :quant, min_quant = :min_quant");
+        $sql = $this->db->prepare("INSERT INTO inventory SET id_company = :id_company, id_category = :id_category, name = :name, price = :price, price_purchase = :price_purchase, quant = :quant, min_quant = :min_quant");
         $sql->bindValue(':id_company', $id_company);
         $sql->bindValue(':id_category', $id_category);
         $sql->bindValue(':name', $name);
         $sql->bindValue(':price', $price);
+        $sql->bindValue(':price_purchase', $price_purchase);
         $sql->bindValue(':quant', $quant);
         $sql->bindValue(':min_quant', $min_quant);
         $sql->execute();
@@ -125,12 +126,13 @@ class Inventory extends Model{
      
     }
     
-    public function edit($id, $id_company, $id_category,$id_user, $name, $price, $quant, $min_quant){
+    public function edit($id, $id_company, $id_category,$id_user, $name, $price, $price_purchase, $quant, $min_quant){
         
-        $sql = $this->db->prepare("UPDATE inventory SET id_category = :id_category, name = :name, price = :price, quant = :quant, min_quant = :min_quant WHERE id = :id AND id_company = :id_company");
+        $sql = $this->db->prepare("UPDATE inventory SET id_category = :id_category, name = :name, price = :price, price_purchase = :price_purchase, quant = :quant, min_quant = :min_quant WHERE id = :id AND id_company = :id_company");
         $sql->bindValue(':id_category', $id_category);
         $sql->bindValue(':name', $name);
         $sql->bindValue(':price', $price);
+        $sql->bindValue(':price_purchase', $price_purchase);
         $sql->bindValue(':quant', $quant);
         $sql->bindValue(':min_quant', $min_quant);
         $sql->bindValue(':id', $id);

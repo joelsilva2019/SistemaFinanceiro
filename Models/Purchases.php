@@ -186,14 +186,14 @@ class Purchases extends Model {
         $total_price = 0;
         
         foreach ($quant as $id_prod => $quant_prod){
-            $sql = $this->db->prepare("SELECT price FROM inventory WHERE id = :id AND id_company = :id_company");
+            $sql = $this->db->prepare("SELECT price_purchase FROM inventory WHERE id = :id AND id_company = :id_company");
             $sql->bindValue(':id', $id_prod);
             $sql->bindValue(':id_company', $id_company);
             $sql->execute();
            
             if($sql->rowCount() > 0){
                $row = $sql->fetch();
-               $price = $row['price'];
+               $price = $row['price_purchase'];
                
                $sqlp = $this->db->prepare("INSERT INTO purchases_products SET id_company = :id_company, id_purchase = :id_purchase, id_product = :id_product, quant = :quant, purchase_price = :purchase_price");
                $sqlp->bindValue(":id_company", $id_company);

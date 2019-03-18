@@ -8,7 +8,8 @@
         <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
         <?php endforeach; ?>
     </select><br/><br/>
-    <input type="text" name="price" placeholder="*Preço 0,00" required/><br/><br/>
+    <input type="text" name="price" placeholder="*Preço de venda 0,00" required/><br/><br/>
+    <input type="text" name="price_purchase" placeholder="*Preço de compra 0,00" required/><br/><br/>
     <input type="number" name="quant" placeholder="*Quantidade em estoque" required/><br/><br/>
     <input type="number" name="min_quant" placeholder="*Quantidade Mínima em estoque" required/><br/><br/>
 

@@ -11,6 +11,7 @@
         <th>Nome</th>
         <th>Categoria</th>
         <th>Preço</th>
+        <th>Preço de compra</th>
         <th>Quantidade</th>
         <th>Quant.Min.</th>
         <th>Ações</th>
@@ -18,9 +19,10 @@
 
     <?php foreach ($inventory_list as $product): ?>
         <tr>
-            <td width="250"><?php echo $product['name']; ?></td>
+            <td width="200"><?php echo $product['name']; ?></td>
             <td><?php echo $product['category_name']; ?></td>
-            <td>R$ <?php echo number_format($product['price'], 2, ',', '.'); ?></td>
+            <td width="110">R$ <?php echo number_format($product['price'], 2, ',', '.'); ?></td>
+            <td width="110">R$ <?php echo number_format($product['price_purchase'], 2, ',', '.'); ?></td>
             <td>              
                 <?php
                 if ($product['min_quant'] > $product['quant']) {
@@ -30,7 +32,7 @@
                 }
                 ?>
             </td>
-            <td width="50"><?php echo $product['min_quant']; ?></td>
+            <td><?php echo $product['min_quant']; ?></td>
             <td width="160">
                 <?php if ($inventory_edit): ?>
                     <a href="<?php echo BASE_URL; ?>Inventory/edit/<?php echo $product['id']; ?>">

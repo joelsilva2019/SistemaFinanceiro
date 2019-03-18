@@ -266,17 +266,14 @@ table td{
     padding: 20px;
     text-align: center;
     font-size: 17px;
+    border-radius: 5px;
 }
 .report_item a{
     text-decoration: none;
-    color: #000;
-    display: block;
+    color: #fff;
 }
 .report_item:hover{
     background-color: #1f232a;
-}
-.report_item a:hover{
-    color: #fff;
 }
 .report_filter{
     width: 25%;

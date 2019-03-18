@@ -23,23 +23,6 @@
     </div>
     </div> 
 </div>
-<div class="db-row row2">
-    <div class="grid-2">
-        <div class="db-info">
-            <div class="db-info-title"><strong>Relátorio de receitas dos ultimos 30 dias</strong></div>
-            <div class="db-info-body">
-                <canvas id="rel1"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="grid-1">
-        <div class="db-info">
-            <div class="db-info-title"><strong>Status de vendas</strong></div>
-            <div class="db-info-body">
-                <canvas id="rel2" height="314"></canvas></div>
-        </div>
-    </div>
-</div>
 
 <div class="db-row row2">
     <div class="grid-2">
@@ -54,6 +37,24 @@
         <div class="db-info">
             <div class="db-info-title"><strong>Status de compras</strong></div>
             <div class="db-info-body"><canvas id="rel4" height="314"></canvas></div>
+        </div>
+    </div>
+</div>
+
+<div class="db-row row2">
+    <div class="grid-2">
+        <div class="db-info">
+            <div class="db-info-title"><strong>Relátorio de receitas dos ultimos 30 dias</strong></div>
+            <div class="db-info-body">
+                <canvas id="rel1"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="grid-1">
+        <div class="db-info">
+            <div class="db-info-title"><strong>Status de vendas</strong></div>
+            <div class="db-info-body">
+                <canvas id="rel2" height="314"></canvas></div>
         </div>
     </div>
 </div>

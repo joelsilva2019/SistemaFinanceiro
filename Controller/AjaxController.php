@@ -52,7 +52,8 @@ class AjaxController extends Model {
                     'name' => $item['name'],
                     'link'=> BASE_URL.'Inventory/edit/'.$item['id'],
                     'id'  => $item['id'],
-                    'price' => $item['price']    
+                    'price' => $item['price'],   
+                    'price_purchase' => $item['price_purchase']     
                 );
                 
             }

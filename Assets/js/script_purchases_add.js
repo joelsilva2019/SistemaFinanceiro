@@ -85,7 +85,7 @@ $(function(){
                  var html = '';
                  
                  for(var i in json){
-                     html += '<div class="si"><a href="javascript:;" data-id="'+json[i].id+'" onclick="addProduct(this)" data-price="'+json[i].price+'" data-name="'+json[i].name+'" >'+json[i].name+' - R$ '+json[i].price+'</a></div>';
+                     html += '<div class="si"><a href="javascript:;" data-id="'+json[i].id+'" onclick="addProduct(this)" data-price="'+json[i].price_purchase+'" data-name="'+json[i].name+'" >'+json[i].name+' - R$ '+json[i].price_purchase+'</a></div>';
                  }
                  
                  $('.search_results').html(html);
