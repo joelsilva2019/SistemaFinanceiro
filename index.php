@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once 'Config.php';
 include_once 'vendor/autoload.php';
