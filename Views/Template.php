@@ -10,7 +10,6 @@
 
     <body>
         <div class="left_menu">
-            <div class="company_name"><?php echo utf8_decode($viewData['company_name']); ?></div>
             <div class="menu_area">
                 <ul>
                     <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
@@ -22,14 +21,11 @@
                     <li><a href="<?php echo BASE_URL; ?>users">Usuários</a></li>
                     <li><a href="<?php echo BASE_URL; ?>Permissions">Permissões</a></li>
                     <li><a href="<?php echo BASE_URL; ?>Report">Relátorios</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>Login/logout">Sair</a></li>
                 </ul>
             </div>
         </div>
         <div class="container">
-            <div class="top">
-                <div class="top_right"><a href="<?php echo BASE_URL; ?>Login/logout">Sair</a></div>
-                <div class="top_right"><?php echo $viewData['user_email']; ?></div>
-            </div>
             <div class="area">
                 <?php $this->loadViewInTemplate($viewName,$viewData); ?>
             </div>

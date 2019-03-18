@@ -6,22 +6,16 @@ body{
 }
 .left_menu{
     width: 200px;
-    background-color: #000;
+    background-color: #2d2c2c;
+    padding-top: 50px;
     position: fixed;
     left: 0;
     bottom: 0;
     top: 0;
 }
-.top{
-    height: 40px;
-    background-color: #000;
-    color: #fff;
-    font-size: 13px;
-}
 .container{
     padding-left: 200px;
 }
-
 .company_name{
     height: 100px;
     line-height: 100px;
@@ -29,18 +23,6 @@ body{
     font-size: 18px;
     color: #fff;
     overflow: hidden;
-}
-.top_right{
-    float:right;
-    height: 40px;
-    font-size: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    line-height: 40px;    
-}
-.top_right a{
-    text-decoration: none;
-    color: #fff;
 }
 .menu_area ul{
     padding: 0;
@@ -90,6 +72,9 @@ body{
 }
 .menu_area li:nth-child(9){
     background-image: url('../images/report.png');
+}
+.menu_area li:nth-child(10){
+    background-image: url('../images/logout.png');
 }
 .area{
     padding: 15px;
@@ -369,25 +354,3 @@ table td{
     padding: 10px;
    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
