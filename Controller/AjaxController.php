@@ -97,5 +97,19 @@ class AjaxController extends Model {
         
     }
     
+    public function getAdvances(){
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        $clients = new Clients();
+        
+        if(isset($_POST['id']) && !empty('id')){
+            $id_sale = addslashes($_POST['id']);
+            $data['advances'] = $clients->getAdvance($id_sale, $users->getCompany()); 
+        }
+            
+          echo json_encode($data);
+    }
+    
     
 }

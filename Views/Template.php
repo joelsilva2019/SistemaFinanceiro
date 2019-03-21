@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>   
+        <meta charset="UTF-8">
         <title><?php echo utf8_encode($viewData['company_name']); ?></title>
         <link href="<?php echo BASE_URL; ?>Assets/css/template.css" rel="stylesheet" />
         <script type="text/javascript" src="<?php echo BASE_URL; ?>Assets/js/jquery-3.3.1.min.js"></script>
@@ -26,6 +27,13 @@
             </div>
         </div>
         <div class="container">
+            <div class="notification_temp">
+            <div class="notification_count">12</div>
+            <div class="notification"/>
+            <img src="<?php echo BASE_URL; ?>/Assets/images/notification.png" width="15"/>
+            </div>
+            </div>
+            <div style="clear: both"></div>
             <div class="area">
                 <?php $this->loadViewInTemplate($viewName,$viewData); ?>
             </div>

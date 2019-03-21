@@ -3,18 +3,16 @@
 class Clients extends Model {
 
     public function addAdvance($id_company,$id_client, $id_sale,$advance){
-        
         $sql = $this->db->prepare("INSERT INTO advance_clients SET id_company = :id_company, id_client = :id_client, id_sale = :id_sale, advance = :advance, date_advance = NOW()");
         $sql->bindValue(":id_company", $id_company);
         $sql->bindValue(":id_client", $id_client);
         $sql->bindValue(":id_sale", $id_sale);
         $sql->bindValue(":advance", $advance);      
         $sql->execute();      
-        
-        
     }
     
     public function getAdvance($id_sale, $id_company){
+        
         $array = array();
         
         $sql = $this->db->prepare("SELECT * FROM advance_clients WHERE id_sale = :id_sale AND id_company = :id_company ORDER BY date_advance DESC");

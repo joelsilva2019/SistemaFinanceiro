@@ -45,22 +45,13 @@ R$ <?php echo number_format($sales_info['info']['total_price'], 2, ',', '.'); ?>
 <hr/>
 <h3>Adiantamentos do cliente</h3>
 
-<table id="table_advance" width="50%">
+<table id="table_advance" data-id="<?php echo $sales_info['info']['id']; ?>" width="50%">
     <tr>
     <th>Valor</th>
     <th>Data</th>
     </tr>
-    <?php foreach ($advance_info as $advance): ?>
-    <tr>
-        <td>R$ <?php echo number_format($advance['advance'], 2, ',', '.'); ?></td>
-        <td><?php echo date('d/m/Y', strtotime($advance['date_advance'])); ?></td>
-    </tr>
-    <?php endforeach; ?>
-    
-    <tr>
-    <td><strong>Valor Total: R$ <?php echo number_format($advance_total,2,',','.'); ?></strong></td>
-    </tr>
 </table>
+
 <?php endif; ?>
 
 <hr/>   
@@ -87,3 +78,6 @@ R$ <?php echo number_format($sales_info['info']['total_price'], 2, ',', '.'); ?>
 </table>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>Assets/js/jquery.mask.js"></script> 
 <script type="text/javascript" src="<?php echo BASE_URL; ?>Assets/js/script_sales_edit.js"></script>
+<script>
+startAdvances();
+</script>

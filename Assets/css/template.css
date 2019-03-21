@@ -6,7 +6,7 @@ body{
 }
 .left_menu{
     width: 200px;
-    background-color: #2d2c2c;
+    background-color: #003366;
     padding-top: 50px;
     position: fixed;
     left: 0;
@@ -39,12 +39,13 @@ body{
     background-position: 10px 14px;
 }
 .menu_area li a{
-    color: #fff;
+    color: #cccccc;
     text-decoration: none;
     display: block;
 }
 .menu_area li:hover{
-    background-color: #1f232a;
+    background-color: #3333ff;
+    color: #fff;
 }
 .menu_area li:nth-child(1){
     background-image: url('../images/home.png');
@@ -155,17 +156,19 @@ table th{
     height: 40px;
     line-height: 40px;
     text-align: left;
-    background-color: #1f232a;
+    background-color: #3366ff;
     color: #fff;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 3px;
+    
 }
 table td{
     height: 40px;
     line-height: 40px;
     text-align: left;
-    background-color: #EEE;
+    background-color: #FFF;
+    border: 1px solid #ccc;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 3px;
@@ -296,7 +299,7 @@ table td{
 }
 
 .db-grid-area{
-    background-color: #4169E1;
+    background-color: #1c274c;
     margin-left: 10px;
     margin-right: 10px;
     height: 100px;
@@ -350,4 +353,32 @@ table td{
 .db-info-body{
     padding: 10px;
    
+}
+.notification{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+.notification_count{
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    font-size: 10px;
+    color: #fff;
+    margin-bottom: 2px;
+    text-align: center;
+    background-color: #cc0000;
+    position: absolute;
+    padding: 0.3px;
+    box-shadow: 0px 0px 1px #999;
+    z-index: 2;
+}
+.notification_temp{
+    float: right;
+    margin-right: 55px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
