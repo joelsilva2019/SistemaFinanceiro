@@ -1,4 +1,12 @@
-
+<div class="notification_temp">
+    <a href="<?php echo BASE_URL; ?>Home/history"><div class="notification_count">
+            <?php echo $history_inventory_count; ?>
+        </div>
+        <div class="notification"/>
+        <img src="<?php echo BASE_URL; ?>/Assets/images/notification.png" width="15"/>
+</div>
+</a>
+</div>
 <div class="db-row row1">
     <div class="grid-1">
         <div class="db-grid-area">

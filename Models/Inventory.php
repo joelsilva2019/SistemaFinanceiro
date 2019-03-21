@@ -38,8 +38,40 @@ class Inventory extends Model{
         $r = $row['c'];
         return $r;
     }
+    
+    public function getHistoryCount($period1, $period2, $id_company){
+        $r = 0;
+        $sql = $this->db->prepare("SELECT COUNT(*) as total FROM inventory_history WHERE id_company = :id_company AND date_action BETWEEN :period1 AND :period2");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->bindValue(':period1', $period1);
+        $sql->bindValue(':period2', $period2);
+        $sql->execute(); 
+        $sql = $sql->fetch();
+        $r = $sql['total'];
+        
+        return $r;
+    }
+    
+    public function getHistory($period1, $period2, $id_company, $offset){
+        $array = array();
+        $sql = $this->db->prepare("SELECT inventory_history.action, inventory_history.date_action, inventory.name, users.email "
+                . "FROM inventory_history LEFT JOIN inventory ON inventory.id = inventory_history.id_product "
+                . "LEFT JOIN users ON users.id = inventory_history.id_user "
+                . "WHERE inventory_history.id_company = :id_company AND inventory_history.date_action BETWEEN :period1 AND :period2 LIMIT $offset, 10");
+        
+        $sql->bindValue(':id_company', $id_company);
+        $sql->bindValue(':period1', $period1);
+        $sql->bindValue(':period2', $period2);
+        $sql->execute(); 
+        
+        if($sql->rowCount() > 0){
+          $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
 
-        public function searchInventoryByName($name, $id_company){
+    public function searchInventoryByName($name, $id_company){
         
         $array = array();
         $sql = $this->db->prepare("SELECT id, name, price, price_purchase FROM inventory WHERE name LIKE :name AND id_company = :id_company LIMIT 10");
@@ -94,7 +126,7 @@ class Inventory extends Model{
         $sql->bindValue(":id_company", $id_company);
         $sql->execute();
         
-         $this->setLog($id_company, $id_prod, $id_user, 'dcs'); 
+        $this->setLog($id_company, $id_prod, $id_user, 'dcs'); 
         
     }
     

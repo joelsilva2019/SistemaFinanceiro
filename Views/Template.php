@@ -26,13 +26,7 @@
                 </ul>
             </div>
         </div>
-        <div class="container">
-            <div class="notification_temp">
-            <div class="notification_count">12</div>
-            <div class="notification"/>
-            <img src="<?php echo BASE_URL; ?>/Assets/images/notification.png" width="15"/>
-            </div>
-            </div>
+            <div class="container">
             <div style="clear: both"></div>
             <div class="area">
                 <?php $this->loadViewInTemplate($viewName,$viewData); ?>
