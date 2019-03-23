@@ -11,6 +11,15 @@
 
     <body>
         <div class="left_menu">
+            <div class="user_area">
+                
+                <div class="user_img">
+                    <div class="radius-img">
+                    <img src="<?php echo BASE_URL; ?>/Assets/images/user.jpg" width="100"/>
+                    </div>
+                </div>
+                <div class="user_email"><?php echo $viewData['user_email']; ?></div>
+            </div>
             <div class="menu_area">
                 <ul>
                     <li><a href="<?php echo BASE_URL; ?>">Home</a></li>

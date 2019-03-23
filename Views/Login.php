@@ -7,6 +7,7 @@
 
     <body>
         <div class="loginarea">
+            <img src="<?php echo BASE_URL; ?>Assets/images/logo.png" width="260">
             <form method="POST">
                 <input type="email" name="email" placeholder="Digite aqui seu email"/>
                 <input type="password" name="password" placeholder="Digite aqui sua senha"/>

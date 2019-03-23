@@ -3,11 +3,11 @@ body{
     padding: 0;
     font-size: 13px;
     font-family: Arial;
+    background-color: #eee;
 }
 .left_menu{
     width: 200px;
-    background-color: #003366;
-    padding-top: 50px;
+    background-color: #080630;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -16,13 +16,25 @@ body{
 .container{
     padding-left: 200px;
 }
-.company_name{
-    height: 100px;
-    line-height: 100px;
+.user_email{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
-    font-size: 18px;
+    font-size: 13px;
     color: #fff;
-    overflow: hidden;
+}
+.user_img{
+    text-align: center;
+    width: 100%;
+    height: 140px;
+    line-height: 160px;
+}
+.user_img img{
+    border-radius: 60px;
+    border: 3px solid #fff;
+    margin-top: 30px;
+    padding: 2px;
 }
 .menu_area ul{
     padding: 0;
@@ -44,41 +56,46 @@ body{
     display: block;
 }
 .menu_area li:hover{
-    background-color: #3333ff;
+    background-color: #060426;
     color: #fff;
 }
 .menu_area li:nth-child(1){
-    background-image: url('../images/home.png');
+    background-image: url('../images/icon/home.png');
 }
 .menu_area li:nth-child(2){
-    background-image: url('../images/clients.png');
+    background-image: url('../images/icon/clients.png');
 }
 .menu_area li:nth-child(3){
-    background-image: url('../images/sale.png');
+    background-image: url('../images/icon/sale.png');
 }
 .menu_area li:nth-child(4){
-    background-image: url('../images/inventory.png');
+    background-image: url('../images/icon/inventory.png');
 }
 .menu_area li:nth-child(5){
-    background-image: url('../images/category.png');
+    background-image: url('../images/icon/category.png');
 }
 .menu_area li:nth-child(6){
-    background-image: url('../images/purchase.png');
+    background-image: url('../images/icon/purchase.png');
 }
 .menu_area li:nth-child(7){
-    background-image: url('../images/man-user.png');
+    background-image: url('../images/icon/man-user.png');
 }
 .menu_area li:nth-child(8){
-    background-image: url('../images/key.png');
+    background-image: url('../images/icon/key.png');
 }
 .menu_area li:nth-child(9){
-    background-image: url('../images/report.png');
+    background-image: url('../images/icon/report.png');
 }
 .menu_area li:nth-child(10){
-    background-image: url('../images/logout.png');
+    background-image: url('../images/icon/logout.png');
+}
+.user_area{
+    width: 100%;
+    height: 180px;
+    background-color: #0a0825;
 }
 .area{
-    padding: 15px;
+   padding: 15px;
 }
 .tab_area{
     height: 40px;
@@ -156,7 +173,7 @@ table th{
     height: 40px;
     line-height: 40px;
     text-align: left;
-    background-color: #3366ff;
+    background-color: #323b45;
     color: #fff;
     padding-left: 10px;
     padding-right: 10px;
@@ -263,7 +280,7 @@ table td{
 .report_item{
     width: 150px;
     height: 140px;
-    background-color:  #999999;
+    background-color:  #323b45;
     float: left;
     margin: 20px;
     padding: 20px;
@@ -299,7 +316,7 @@ table td{
 }
 
 .db-grid-area{
-    background-color: #1c274c;
+    background-color: #3366ff;
     margin-left: 10px;
     margin-right: 10px;
     height: 100px;
@@ -360,7 +377,7 @@ table td{
     border: 1px solid #000;
     padding: 5px;
     position: absolute;
-    top:10px;
+    top:20px;
     z-index: 1;
 }
 .notification_count{
@@ -373,14 +390,19 @@ table td{
     text-align: center;
     background-color: #cc0000;
     position: absolute;
-    top:10px;
+    top:20px;
     padding: 0.3px;
     box-shadow: 0px 0px 1px #999;
     z-index: 2;
 }
 .notification_temp{
     float: right;
-    margin-right: 55px;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-right: 55px;   
+}
+.content-user{
+    width: 100%;
+    height: 40px;
+    margin-top: 0;
+    border-bottom: 2px solid #ccc;
+    background-color: #fff;
 }
