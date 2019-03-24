@@ -1,4 +1,4 @@
-$(function () {
+$(function(){
 var input = document.getElementById('input-file');
     var fileName = document.getElementById('file-name');
 
