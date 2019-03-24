@@ -33,9 +33,17 @@ class Core {
             $currentAction = "index";
         }
         
+        if(file_exists("Controller/".$currentController.".php")){
         $c = new $currentController();
+        if(method_exists($c, $currentAction)){
         call_user_func_array(array($c, $currentAction), $param);
+        }else {
+            header('Location: '.BASE_URL);  
+        }
         
+        } else {
+            header('Location: '.BASE_URL);  
+        }
     }
 
 }

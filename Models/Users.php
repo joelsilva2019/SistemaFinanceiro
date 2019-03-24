@@ -4,6 +4,7 @@ class Users extends Model {
 
     private $userInfo;
     private $permissions;
+    private $id;
 
     function isLogged() {
 
@@ -70,6 +71,14 @@ class Users extends Model {
         }
     }
     
+    public function getImage() {
+        if (isset($this->userInfo['image']) && !empty($this->userInfo['image'])) {
+            return $this->userInfo['image'];
+        } else {
+            return 0;
+        }
+    }
+    
     
     public function getInfo($id, $id_company){
         $array = array();
@@ -120,6 +129,23 @@ class Users extends Model {
        }
        return $array; 
     }
+    
+    public function getIds($id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT id FROM users WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+                      
+           foreach($sql->fetchAll() as $v){
+               $array[] = $v['id'];
+           }
+            
+        }
+        
+        return $array;
+    }
 
     public function add($email, $pass, $groups, $id_company) {
 
@@ -136,13 +162,22 @@ class Users extends Model {
             $sql->bindValue(':password', md5($pass));
             $sql->bindValue(':id_group', $groups);
             $sql->execute();
+            $this->id = $this->db->lastInsertId();
             return '1';
         } else {
             return '0';
         }
     }
     
-    public function edit($pass, $groups, $id, $id_company){
+    public function updateImg($id_company,$id_user,$name_image){
+        $sql = $this->db->prepare("UPDATE users SET image = :image WHERE id = :id AND id_company = :id_company");
+        $sql->bindValue(':image', $name_image);
+        $sql->bindValue(':id', $id_user);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+    }
+
+        public function edit($pass, $groups, $id, $id_company){
         $sql = $this->db->prepare("UPDATE users SET id_group = :group WHERE id = :id AND :id_company = :id_company");
         $sql->bindValue(':group', $groups);
         $sql->bindValue(':id', $id);
@@ -165,6 +200,12 @@ class Users extends Model {
         $sql->bindValue(':id', $id);
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();
+    }
+    
+    public function getIdInsert(){
+        if(!empty($this->id)){
+            return $this->id;
+        }   
     }
 
 }

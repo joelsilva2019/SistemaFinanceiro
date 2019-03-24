@@ -18,6 +18,7 @@ class PurchasesController extends Controller {
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
+        $data['user_image'] = $users->getImage();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',
           1 => 'Pago',
@@ -55,6 +56,7 @@ class PurchasesController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('purchases_add')) {
@@ -85,6 +87,7 @@ class PurchasesController extends Controller {
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
+        $data['user_image'] = $users->getImage();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',
           1 => 'Pago',

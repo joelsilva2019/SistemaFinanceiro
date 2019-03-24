@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>   
@@ -15,7 +16,7 @@
                 
                 <div class="user_img">
                     <div class="radius-img">
-                    <img src="<?php echo BASE_URL; ?>/Assets/images/user.jpg" width="100"/>
+                        <img src="<?php echo BASE_URL; ?>/Assets/images/users/<?php echo $viewData['user_image']; ?>" width="100"/>
                     </div>
                 </div>
                 <div class="user_email"><?php echo $viewData['user_email']; ?></div>

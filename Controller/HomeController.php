@@ -18,6 +18,7 @@ class HomeController extends Controller {
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['history_inventory_count'] = $inventory->getHistoryCount(date("Y-m-d", strtotime("-7days")), date("Y-m-d"), $users->getCompany());
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',
@@ -48,6 +49,7 @@ class HomeController extends Controller {
         $users = new Users();
         $users->setUser();
         $data['user_email'] = $users->getEmail();
+        $data['user_image'] = $users->getImage();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['history_actions'] = array(

@@ -1,4 +1,14 @@
 $(function () {
+var input = document.getElementById('input-file');
+    var fileName = document.getElementById('file-name');
+
+    input.addEventListener('change', function () {
+        fileName.textContent = this.value;
+    });
+});
+
+
+$(function () {
 
     $('.tab_item').on('click', function () {
 
@@ -63,6 +73,9 @@ $(function () {
          
      });
      
+     $("#checkTodos").on('click', function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+     });
 
 });
 

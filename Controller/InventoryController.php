@@ -17,6 +17,7 @@ class InventoryController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('inventory_view')){
@@ -52,6 +53,7 @@ class InventoryController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('inventory_add')){
@@ -93,6 +95,7 @@ class InventoryController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('inventory_add')){

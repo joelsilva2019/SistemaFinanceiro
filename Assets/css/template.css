@@ -136,6 +136,24 @@ select,textarea{
     margin-bottom: 5px;
 }
 
+input[type='file'] {
+    display: none
+}
+
+.input-wrapper label {
+  background-color: #3498db;
+  border-radius: 5px;
+  color: #fff;
+  margin: 10px;
+  padding: 10px 200px;
+  cursor: pointer;
+      
+}
+
+.input-wrapper label:hover {
+  background-color: #2980b9
+}
+
 input[type=date]{
     width: 80%;
     padding: 5px;
@@ -231,7 +249,7 @@ table td{
     width: 100px;
     float:right;
     border-radius: 3px;
-    background-image: url('../images/search.png');
+    background-image: url('../images/icon/search.png');
     background-repeat: no-repeat;
     background-size: 18px 18px;
     background-position: 5px;

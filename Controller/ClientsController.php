@@ -15,6 +15,7 @@ class ClientsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('clients_view')) {
@@ -46,6 +47,7 @@ class ClientsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('clients_view')) {
@@ -88,6 +90,7 @@ class ClientsController extends Controller {
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
+        $data['user_image'] = $users->getImage();
 
         if ($users->hasPermission('clients_view')) {
             $clients = new Clients();
@@ -132,6 +135,7 @@ class ClientsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('clients_view')) {

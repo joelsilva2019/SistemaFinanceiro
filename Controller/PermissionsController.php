@@ -17,7 +17,7 @@ class PermissionsController extends Controller {
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
-
+        $data['user_image'] = $users->getImage();
         if ($users->hasPermission('permissions_view')) {
             $permissions = new Permissions();
             $data['permissions_list'] = $permissions->getList($users->getCompany());
@@ -57,6 +57,7 @@ class PermissionsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('permissions_view')) {
@@ -85,6 +86,7 @@ class PermissionsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('permissions_view')) {
@@ -105,6 +107,7 @@ class PermissionsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('permissions_view')) {
@@ -119,13 +122,14 @@ class PermissionsController extends Controller {
         
     }
    
-     public function editGroup($id){
-         
+     public function editGroup($id = null){
+        if(!empty($id)){ 
         $data = array();
         $users = new Users();
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('permissions_view')) {
@@ -148,6 +152,9 @@ class PermissionsController extends Controller {
             header("Location: " . BASE_URL);
         }
              
+        } else {
+            header("Location: " . BASE_URL);
+        }
     }
    
 

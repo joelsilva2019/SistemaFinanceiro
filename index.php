@@ -14,6 +14,8 @@ spl_autoload_register(function ($class){
             include_once "Models/".$class.".php";
     } elseif (file_exists("Core/".$class.".php")){
         include_once "Core/".$class.".php";
+    } else {
+        include_once 'Views/404.php'; 
     }
     
 });

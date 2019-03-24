@@ -17,6 +17,7 @@ class CategoryController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('category_view')) {
@@ -36,6 +37,7 @@ class CategoryController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('category_add')) {
@@ -59,6 +61,7 @@ class CategoryController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('category_add')) {

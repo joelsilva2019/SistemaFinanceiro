@@ -16,6 +16,7 @@ class SalesController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',
@@ -61,6 +62,7 @@ class SalesController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('sales_add')) {
@@ -91,6 +93,7 @@ class SalesController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',

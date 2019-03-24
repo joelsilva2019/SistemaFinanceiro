@@ -16,6 +16,7 @@ class ReportController extends Controller{
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('report_view')) {
@@ -33,6 +34,7 @@ class ReportController extends Controller{
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',
@@ -97,6 +99,7 @@ class ReportController extends Controller{
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
+        $data['user_image'] = $users->getImage();
         $data['status_name'] = array(
           0 => 'Aguardando Pagament.',
           1 => 'Pago',
@@ -160,6 +163,7 @@ class ReportController extends Controller{
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
         if ($users->hasPermission('report_view')) {
             $category = new Category();

@@ -4,6 +4,8 @@
 
     <input type="text" name="group" placeholder="Nome do grupo"/><br/><br/>
     <label>Permissões</label><br/>
+    <input type="checkbox" id="checkTodos"/> Selecionar todas<br/><br/>
+    
     <?php foreach ($permissions_list as $permission): ?>
         <div class="p_item">
             <input type="checkbox" name="permissions[]" value="<?php echo $permission['id']; ?>" id="p_<?php echo $permission['id']; ?>"/>
