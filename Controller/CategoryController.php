@@ -24,7 +24,6 @@ class CategoryController extends Controller {
             $category = new Category();
             
             $data['category_list'] = $category->getList($users->getCompany());
-            $data['category_add'] = $users->hasPermission('category_add');
             $data['category_edit'] = $users->hasPermission('category_edit');
             $this->loadTemplate("Category", $data);
         }
@@ -40,7 +39,7 @@ class CategoryController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('category_add')) {
+        if ($users->hasPermission('category_edit')) {
             $category = new Category();
             
             if(isset($_POST['category']) && !empty($_POST['category'])){
@@ -68,7 +67,7 @@ class CategoryController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('category_add')) {
+        if ($users->hasPermission('category_edit')) {
             if(isset($_POST['category']) && !empty($_POST['category'])){
                $name = addslashes($_POST['category']);
                

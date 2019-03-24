@@ -67,7 +67,7 @@ class SalesController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('sales_add')) {
+        if ($users->hasPermission('sales_edit')) {
             $sales = new Sales();
             
             if(isset($_POST['client_id']) && !empty($_POST['client_id'])){
@@ -113,7 +113,7 @@ class SalesController extends Controller {
           2 => 'A receber'             
         );
 
-        if ($users->hasPermission('sales_view')) {
+        if ($users->hasPermission('sales_edit')) {
             $clients = new Clients();
             $data['sales_edit'] = $users->hasPermission('sales_edit');
             

@@ -18,6 +18,7 @@ class UsersController extends Controller {
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
         $data['user_image'] = $users->getImage();
+        $data['user_edit'] = $users->hasPermission('users_edit');
 
         if ($users->hasPermission('users_view')) {
             $data['user_list'] = $users->getList($users->getCompany());
@@ -37,7 +38,7 @@ class UsersController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('users_view')) {
+        if ($users->hasPermission('users_edit')) {
             $permissions = new Permissions();
             
             if(isset($_POST['email']) && !empty($_POST['email'])){
@@ -89,7 +90,7 @@ class UsersController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('users_view')) {
+        if ($users->hasPermission('users_edit')) {
             $permissions = new Permissions();
             
             if(isset($_POST['groups']) && !empty($_POST['groups'])){
@@ -138,7 +139,7 @@ class UsersController extends Controller {
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('users_view')) {
+        if ($users->hasPermission('users_edit')) {
             
             $users->del($id, $users->getCompany());
             header("Location: " . BASE_URL . "Users");

@@ -37,7 +37,6 @@ class InventoryController extends Controller {
             $data['inventory_list'] = $inventory->getList($offset,$users->getCompany());
             $data['inventory_count'] = $inventory->getCount($users->getCompany());
             $data['p_count'] = ceil($data['inventory_count']/10);
-            $data['inventory_add'] = $users->hasPermission('inventory_add');
             $data['inventory_edit'] = $users->hasPermission('inventory_edit');
             
             $this->loadTemplate('Inventory', $data); 
@@ -56,7 +55,7 @@ class InventoryController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('inventory_add')){
+        if ($users->hasPermission('inventory_edit')){
     
             $category = new Category();
             $inventory = new Inventory();
@@ -103,7 +102,7 @@ class InventoryController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('inventory_add')){
+        if ($users->hasPermission('inventory_edit')){
             $category = new Category();          
             if(isset($_POST['name']) && !empty($_POST['name'])){
                 $name = addslashes($_POST['name']);

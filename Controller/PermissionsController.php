@@ -34,9 +34,10 @@ class PermissionsController extends Controller {
         $users->setUser();
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('permissions_view')) {
+        if ($users->hasPermission('permissions_edit')) {
 
             $permissions = new Permissions();
             //usuario adicionou uma nova permissão.
@@ -60,7 +61,7 @@ class PermissionsController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('permissions_view')) {
+        if ($users->hasPermission('permissions_edit')) {
 
             $permissions = new Permissions();
             $data['permissions_list'] = $permissions->getList($users->getCompany());
@@ -92,7 +93,7 @@ class PermissionsController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('permissions_view')) {
+        if ($users->hasPermission('permissions_edit')) {
 
             
             //usuario deletou uma permissão.
@@ -122,7 +123,7 @@ class PermissionsController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('permissions_view')) {
+        if ($users->hasPermission('permissions_edit')) {
             //usuario deletou uma permissão.
             $permissions->delGroup($id);
             header("Location: " . BASE_URL . "Permissions");    

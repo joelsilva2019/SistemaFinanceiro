@@ -1,6 +1,6 @@
 <h1>Estoque</h1>
 
-<?php if ($inventory_add): ?>
+<?php if ($inventory_edit): ?>
     <a href="<?php echo BASE_URL; ?>Inventory/add"><div class="button">Adicionar Produto</div></a>
 
 <input type="text" id="search" data-type="search_inventory"/>

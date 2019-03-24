@@ -43,7 +43,7 @@ class ReportController extends Controller{
             
         );
 
-        if ($users->hasPermission('report_view')) {
+        if ($users->hasPermission('report_edit')) {
             
 
             $this->loadTemplate("Report_sale", $data);
@@ -64,7 +64,7 @@ class ReportController extends Controller{
             
         );
 
-        if ($users->hasPermission('report_view')) {
+        if ($users->hasPermission('report_edit')) {
             
             $sales = new Sales();
             $client_name = addslashes($_GET['client_name']);
@@ -107,7 +107,7 @@ class ReportController extends Controller{
             
         );
 
-        if ($users->hasPermission('report_view')) {
+        if ($users->hasPermission('report_edit')) {
             
 
             $this->loadTemplate("Report_purchase", $data);
@@ -128,7 +128,7 @@ class ReportController extends Controller{
             
         );
 
-        if ($users->hasPermission('report_view')) {
+        if ($users->hasPermission('report_edit')) {
             
             $purchases = new Purchases();
             
@@ -165,7 +165,7 @@ class ReportController extends Controller{
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
-        if ($users->hasPermission('report_view')) {
+        if ($users->hasPermission('report_edit')) {
             $category = new Category();
 
             $data['category_list'] = $category->getList($users->getCompany());
@@ -181,7 +181,7 @@ class ReportController extends Controller{
         $users = new Users();
         $users->setUser();
 
-        if ($users->hasPermission('report_view')) {
+        if ($users->hasPermission('report_edit')) {
             
             $inventory = new Inventory();
             

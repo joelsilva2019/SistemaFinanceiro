@@ -23,7 +23,9 @@
         <td><?php echo $status_sale_name[$sale['status_sale']]; ?></td>
         <td><?php echo number_format($sale['total_price'], 2, ',','.'); ?></td>
         <td width="80">
+        <?php if($sales_edit): ?>
            <a href="<?php echo BASE_URL; ?>Sales/edit/<?php echo $sale['id']; ?>"><div class="button button_small">Editar</div></a>
+        <?php endif; ?>
         </td>
     </tr>    
     <?php endforeach; ?>

@@ -1,6 +1,6 @@
 <h1>Categorias</h1>
 
- <?php if($category_add): ?>
+ <?php if($category_edit): ?>
         <a href="<?php echo BASE_URL; ?>Category/add"><div class="button">Adicionar Categoria</div></a>
         <?php endif; ?>
         

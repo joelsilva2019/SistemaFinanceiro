@@ -59,7 +59,7 @@ class PurchasesController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('purchases_add')) {
+        if ($users->hasPermission('purchases_edit')) {
             $purchases = new Purchases();
             
             if(isset($_POST['quant']) && !empty($_POST['quant'])){
@@ -99,7 +99,7 @@ class PurchasesController extends Controller {
           2 => 'Cancelado'    
         );
         
-        if ($users->hasPermission('purchases_view')) {
+        if ($users->hasPermission('purchases_edit')) {
             $data['purchases_edit'] = $users->hasPermission('purchases_edit');
             
             if(isset($_POST['status']) && $data['purchases_edit'] == true){

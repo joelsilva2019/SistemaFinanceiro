@@ -23,9 +23,12 @@
             <td><?php echo $status_name[$purchase['status']]; ?></td>
             <td><?php echo number_format($purchase['total_price'], 2, ',', '.'); ?></td>
             <td width="80">
+            <?php if ($purchases_edit): ?>
                 <a href="<?php echo BASE_URL; ?>Purchases/edit/<?php echo $purchase['id']; ?>"><div class="button button_small">Editar</div></a>
+            <?php endif; ?>
             </td>
-        </tr>    
+           </tr>
+        
     <?php endforeach; ?>
 </table>
 

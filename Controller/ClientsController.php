@@ -34,7 +34,7 @@ class ClientsController extends Controller {
             $data['clients_list'] = $clients->getList($offset, $users->getCompany());
             $data['clients_count'] = $clients->getCount($users->getCompany());
             $data['p_count'] = ceil($data['clients_count']/10);
-            $data['has_permission'] = $users->hasPermission('clients_edit');
+            $data['clients_edit'] = $users->hasPermission('clients_edit');
             $this->loadTemplate("Clients", $data);
         } else {
             header("Location: " . BASE_URL);
@@ -50,7 +50,7 @@ class ClientsController extends Controller {
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
-        if ($users->hasPermission('clients_view')) {
+        if ($users->hasPermission('clients_edit')) {
             $clients = new Clients();
             
             if(isset($_POST['name']) && !empty($_POST['name'])){
@@ -97,7 +97,7 @@ class ClientsController extends Controller {
         $data['user_email'] = $users->getEmail();
         $data['user_image'] = $users->getImage();
 
-        if ($users->hasPermission('clients_view')) {
+        if ($users->hasPermission('clients_edit')) {
             
             if(isset($_POST['name']) && !empty($_POST['name'])){
                 

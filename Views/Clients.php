@@ -1,6 +1,6 @@
 <h1>Clientes</h1>
          
-        <?php if($has_permission): ?>
+        <?php if($clients_edit): ?>
         <a href="<?php echo BASE_URL; ?>Clients/add"><div class="button">Adicionar Clientes</div></a>
         
         <input type="text" id="search" data-type="search_clients"/>
@@ -22,7 +22,7 @@
                     <td><?php echo $client['address_city']; ?></td>
                     <td style="text-align: center;" width="50"><?php echo $client['stars']; ?></td>
                     <td style="text-align: center;" width="160">
-                        <?php if($has_permission): ?>
+                        <?php if($clients_edit): ?>
                         <a href="<?php echo BASE_URL; ?>Clients/edit/<?php echo $client['id']; ?>">
                             <div class="button button_small">Editar</div></a>
 
