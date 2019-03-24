@@ -2,8 +2,9 @@
          
         <?php if($has_permission): ?>
         <a href="<?php echo BASE_URL; ?>Clients/add"><div class="button">Adicionar Clientes</div></a>
-        <?php endif; ?>
+        
         <input type="text" id="search" data-type="search_clients"/>
+        <?php endif; ?>
         <table width="100%" border="0">
             <tr>
                 <th>Nome</th>

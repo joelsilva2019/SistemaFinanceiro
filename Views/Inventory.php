@@ -2,10 +2,9 @@
 
 <?php if ($inventory_add): ?>
     <a href="<?php echo BASE_URL; ?>Inventory/add"><div class="button">Adicionar Produto</div></a>
-<?php endif; ?>
 
 <input type="text" id="search" data-type="search_inventory"/>
-
+<?php endif; ?>
 <table width="100%" border="0">
     <tr>
         <th>Nome</th>

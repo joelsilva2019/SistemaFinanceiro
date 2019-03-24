@@ -56,6 +56,25 @@ class Clients extends Model {
         return $array;
     }
     
+    public function getIds($id_company){
+        
+        $array = array();
+        $sql = $this->db->prepare("SELECT id FROM clients WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+                      
+           foreach($sql->fetchAll() as $v){
+               $array[] = $v['id'];
+           }
+            
+        }
+        
+        return $array;
+        
+    }
+    
     public function getClient($id, $id_company){
         $array = array();
         

@@ -54,6 +54,44 @@ class Permissions extends Model {
         }
         return $array;
     }
+    
+    public function getIds($id_company){
+        
+        $array = array();
+        $sql = $this->db->prepare("SELECT id FROM permission_params WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+                      
+           foreach($sql->fetchAll() as $v){
+               $array[] = $v['id'];
+           }
+            
+        }
+        
+        return $array;
+        
+    }
+    
+    public function getIdsGroups($id_company){
+        
+        $array = array();
+        $sql = $this->db->prepare("SELECT id FROM permission_groups WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+                      
+           foreach($sql->fetchAll() as $v){
+               $array[] = $v['id'];
+           }
+            
+        }
+        
+        return $array;
+        
+    }
 
     public function add($permission, $id_company) {
         $sql = $this->db->prepare("INSERT INTO permission_params SET id_company = :id_company, name = :name");

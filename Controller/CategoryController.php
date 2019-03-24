@@ -59,14 +59,16 @@ class CategoryController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $category = new Category();
+        $data['category_id'] = $category->getIds($users->getCompany());
+        if(in_array($id, $data['category_id'])){
+        
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('category_add')) {
-            $category = new Category();
-            
             if(isset($_POST['category']) && !empty($_POST['category'])){
                $name = addslashes($_POST['category']);
                
@@ -77,19 +79,28 @@ class CategoryController extends Controller {
             $data['category_info'] = $category->getInfo($id, $users->getCompany());
             $this->loadTemplate("Category_edit", $data);
         }
+      } else {
+          header("Location: ".BASE_URL);
+      }
     }
     
     function delete($id){
         
     $users = new Users();
     $users->setUser();
-
+    $category = new Category();
+    $data['category_id'] = $category->getIds($users->getCompany());
+    if(in_array($id, $data['category_id'])){
+    
     if($users->hasPermission('category_edit')){
-       $category = new Category();
        $category->del($id, $users->getCompany());
        header("Location: ".BASE_URL."Category");
     }    
            
+    } else {
+       header("Location: ".BASE_URL); 
     }
     
+  }
+
 }

@@ -87,13 +87,17 @@ class ClientsController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $clients = new Clients();
+        $data['clients_id'] = $clients->getIds($users->getCompany());
+        if(in_array($id, $data['clients_id'])){
+            
+        
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
         $data['user_image'] = $users->getImage();
 
         if ($users->hasPermission('clients_view')) {
-            $clients = new Clients();
             
             if(isset($_POST['name']) && !empty($_POST['name'])){
                 
@@ -122,6 +126,9 @@ class ClientsController extends Controller {
         } else {
             header("Location: " . BASE_URL);
         }
+        } else {
+            header("Location: " . BASE_URL);
+        }
     }
     
     public function delete($id){
@@ -133,15 +140,21 @@ class ClientsController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $clients = new Clients();
+        $data['clients_id'] = $clients->getIds($users->getCompany());
+        if(in_array($id, $data['clients_id'])){
+            
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('clients_view')) {
-            $clients = new Clients();
             $data['client_info'] = $clients->getClient($id,$users->getCompany());
             $this->loadTemplate("Clients_view", $data);
+        } else {
+            header("Location: " . BASE_URL);
+        }
         } else {
             header("Location: " . BASE_URL);
         }

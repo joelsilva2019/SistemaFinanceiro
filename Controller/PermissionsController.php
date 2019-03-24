@@ -84,6 +84,9 @@ class PermissionsController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $permissions = new Permissions();
+        $data['permissions_id'] = $permissions->getIds($users->getCompany());
+        if(in_array($id, $data['permissions_id'])){
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
@@ -91,13 +94,16 @@ class PermissionsController extends Controller {
 
         if ($users->hasPermission('permissions_view')) {
 
-            $permissions = new Permissions();
+            
             //usuario deletou uma permissão.
             $permissions->del($id);
             header("Location: " . BASE_URL . "Permissions");    
         } else {
             header("Location: " . BASE_URL);
         }
+       } else {
+           header("Location: " . BASE_URL); 
+       }
     }
     
     public function deleteGroup($id){
@@ -105,36 +111,44 @@ class PermissionsController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $permissions = new Permissions();
+        
+        $data['permissions_groups_id'] = $permissions->getIdsGroups($users->getCompany());
+        if(in_array($id, $data['permissions_groups_id'])){
+            
+        
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('permissions_view')) {
-
-            $permissions = new Permissions();
             //usuario deletou uma permissão.
             $permissions->delGroup($id);
             header("Location: " . BASE_URL . "Permissions");    
         } else {
             header("Location: " . BASE_URL);
         }
-        
+      } else {
+           header("Location: " . BASE_URL);
+      }
     }
    
      public function editGroup($id = null){
-        if(!empty($id)){ 
         $data = array();
         $users = new Users();
         $users->setUser();
+        $permissions = new Permissions();
+        $data['permissions_groups_id'] = $permissions->getIdsGroups($users->getCompany());
+        if(in_array($id, $data['permissions_groups_id'])){
+            
+        
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
         $data['user_email'] = $users->getEmail();
 
         if ($users->hasPermission('permissions_view')) {
-
-            $permissions = new Permissions();
             //usuario adicionou uma nova permissão.
             if (isset($_POST['group']) && !empty($_POST['group'])) {
                 
@@ -151,11 +165,12 @@ class PermissionsController extends Controller {
         } else {
             header("Location: " . BASE_URL);
         }
-             
+        
         } else {
             header("Location: " . BASE_URL);
         }
-    }
+             
+      }
    
 
 }

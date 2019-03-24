@@ -84,6 +84,11 @@ class PurchasesController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $purchases = new Purchases();
+        $data['purchases_id'] = $purchases->getIds($users->getCompany());
+        if(in_array($id, $data['purchases_id'])){
+            
+        
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_email'] = $users->getEmail();
@@ -95,7 +100,6 @@ class PurchasesController extends Controller {
         );
         
         if ($users->hasPermission('purchases_view')) {
-            $purchases = new Purchases();
             $data['purchases_edit'] = $users->hasPermission('purchases_edit');
             
             if(isset($_POST['status']) && $data['purchases_edit'] == true){
@@ -110,6 +114,8 @@ class PurchasesController extends Controller {
         } else {
             header("Location: " . BASE_URL);
         }
-     }
- 
+     } else {
+            header("Location: " . BASE_URL);
+       }
+   } 
 }

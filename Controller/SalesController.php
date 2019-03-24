@@ -14,6 +14,8 @@ class SalesController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        
+        
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
@@ -91,6 +93,9 @@ class SalesController extends Controller {
         $data = array();
         $users = new Users();
         $users->setUser();
+        $sales = new Sales();
+        $data['sales_ids'] = $sales->getIds($users->getCompany());
+        if(in_array($id, $data['sales_ids'])){
         $companies = new Companies($users->getCompany());
         $data['company_name'] = $companies->getName();
         $data['user_image'] = $users->getImage();
@@ -109,7 +114,6 @@ class SalesController extends Controller {
         );
 
         if ($users->hasPermission('sales_view')) {
-            $sales = new Sales();
             $clients = new Clients();
             $data['sales_edit'] = $users->hasPermission('sales_edit');
             
@@ -129,8 +133,10 @@ class SalesController extends Controller {
         } else {
             header("Location: " . BASE_URL);
         }
-    } 
+       } else {
+           header("Location: " . BASE_URL);
+       } 
     
-
+    }
         
 }
