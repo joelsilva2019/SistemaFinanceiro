@@ -111,5 +111,29 @@ class AjaxController extends Model {
           echo json_encode($data);
     }
     
+    function search_sales(){
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        $sales = new Sales();
+        if(isset($_GET['q']) && !empty($_GET['q'])){
+            
+            $q = addslashes($_GET['q']);
+            $sales_search = $sales->searchSalesByName($q, $users->getCompany());
+            
+            foreach ($sales_search as $sitem){
+                $data[] = array(
+                    'name' => $sitem['name'],
+                    'link' => BASE_URL.'Sales/sales_client/'.$sitem['id_client'],
+                    'id'   => $sitem['id']    
+                );
+                
+            }
+            
+        }
+        
+        echo json_encode($data);
+    }
+    
     
 }

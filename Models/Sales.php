@@ -18,25 +18,36 @@ class Sales extends Model {
     }
     
     public function getIds($id_company){
-        
         $array = array();
         $sql = $this->db->prepare("SELECT id FROM sales WHERE id_company = :id_company");
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();
         
         if($sql->rowCount() > 0){
-                      
            foreach($sql->fetchAll() as $v){
                $array[] = $v['id'];
            }
             
-        }
-        
+        }        
         return $array;
+    }
+    
+    public function getIdClient($id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT id_client FROM sales WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
         
+        if($sql->rowCount() > 0){
+           foreach($sql->fetchAll() as $v){
+               $array[] = $v['id_client'];
+           }
+            
+        }        
+        return $array;
     }
 
-        public function getInfo($id, $id_company){
+    public function getInfo($id, $id_company){
     
         $array = array();
         $sql = $this->db->prepare("SELECT *, (select clients.name from clients where clients.id = sales.id_client) as client_name"
@@ -167,10 +178,41 @@ class Sales extends Model {
            $int = $r['total'];
         }
         return $int;
-    } 
+    }
     
+    public function getSalesClient($id_client, $id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT clients.name, sales.id, sales.date_sale, sales.total_price, sales.status, sales.status_sale FROM sales "
+                . "LEFT JOIN clients ON clients.id = sales.id_client "
+                . "WHERE sales.id_client = :id_client AND sales.id_company = :id_company");
+        $sql->bindValue(':id_client', $id_client);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
+    
+    public function searchSalesByName($name, $id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT sales.id, sales.id_client, clients.name FROM sales "
+                . "LEFT JOIN clients ON clients.id = sales.id_client "
+                . "WHERE clients.name LIKE :name AND sales.id_company = :id_company");
+        $sql->bindValue(':name', '%'.$name.'%');
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+       
+        return $array;
+    }
 
-    public function changeStatus($status,$status_sale,$id,$id_company){
+
+        public function changeStatus($status,$status_sale,$id,$id_company){
         
         $sql = $this->db->prepare("UPDATE sales SET status = :status, status_sale = :status_sale WHERE id = :id AND id_company = :id_company");
         $sql->bindValue(':status', $status);

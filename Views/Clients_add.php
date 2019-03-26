@@ -1,4 +1,4 @@
-<h1>Clientes - Adicionar</h1>
+<h1>Clientes - adicionar</h1>
 
 <form method="POST">
     <input type="text" name="name" placeholder="*Nome do Cliente" required/><br/><br/>

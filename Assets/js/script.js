@@ -7,7 +7,6 @@ var input = document.getElementById('input-file');
     });
 });
 
-
 $(function () {
 
     $('.tab_item').on('click', function () {
@@ -62,7 +61,7 @@ $(function () {
                  var html = '';
                  
                  for(var i in json){
-                     html += '<div class="si"><a href="'+json[i].link+'">'+json[i].name+'</a></div>';
+                       html += '<div class="si"><a href="'+json[i].link+'">'+json[i].name+'</a></div>';
                  }
                  
                  $('.search_results').html(html);

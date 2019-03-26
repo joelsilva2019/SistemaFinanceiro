@@ -32,5 +32,5 @@
 
     <input type="submit" value="Editar"/>
 </form>
-   
+    <script type="text/javascript" src="<?php echo BASE_URL; ?>Assets/js/jquery.mask.js"></script> 
     <script type="text/javascript" src="<?php echo BASE_URL; ?>Assets/js/script_clients_add.js"></script>    

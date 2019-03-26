@@ -138,5 +138,46 @@ class SalesController extends Controller {
        } 
     
     }
+    
+    public function sales_client($id){
+        
+        $data = [];
+        $users = new Users();
+        $users->setUser();
+        $sales = new Sales();
+        $data['sales_ids'] = $sales->getIdClient($users->getCompany());
+        if(in_array($id, $data['sales_ids'])){
+        $companies = new Companies($users->getCompany());
+        $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
+        $data['user_email'] = $users->getEmail();    
+            
+        
+        $data['status_name'] = array(
+          0 => 'Aguardando Pagament.',
+          1 => 'Pago',
+          2 => 'Cancelado'  
+            
+        );
+        
+        $data['status_sale_name'] = array(
+          0 => 'Entregue',
+          1 => 'A entregar',
+          2 => 'A receber'             
+        );    
+            
+         if($users->hasPermission('sales_view')){   
+        
+           $data['sales_edit'] = $users->hasPermission('sales_edit');  
+           $data['sales_client'] = $sales->getSalesClient($id, $users->getCompany());  
+           $this->loadTemplate('Sales_client', $data);
+         } else {
+             header("Location: ".BASE_URL);
+         }
+        
+       } else {
+            header("Location: ".BASE_URL); 
+        }
+    }
         
 }

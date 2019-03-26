@@ -1,11 +1,6 @@
-<h1>Vendas</h1>
+<h1>Vendas do Cliente</h1> 
 
-<?php if($sales_edit): ?>
-    <a href="<?php echo BASE_URL; ?>Sales/add"><div class="button">Adicionar Venda</div></a>
-    
-    <input type="text" id="search" data-type="search_sales"/>
-<?php endif; ?>
-        
+
 <table width="100%" border="0">
     <tr>
         <th>Nome do Cliente</th>
@@ -16,7 +11,7 @@
         <th>Ações</th>
     </tr>
 
-    <?php foreach ($sales_list as $sale): ?>
+    <?php foreach ($sales_client as $sale): ?>
     
     <tr>
         <td><?php echo $sale['name']; ?></td>
@@ -32,9 +27,4 @@
     </tr>    
     <?php endforeach; ?>
 </table>
-    <div class="pagination">
-            <?php for($i=1;$i<=$p_count; $i++): ?>
-            <div class="pag_item <?php echo ($i == $p) ? 'pag_select': ''; ?>"><a href="<?php echo BASE_URL; ?>Sales?p=<?php echo $i; ?>"><?php echo $i; ?></a></div>
-            <?php endfor; ?>
-        </div>
-    <div style="clear: both;"></div>
+
