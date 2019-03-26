@@ -2,6 +2,8 @@
 
 <?php if ($purchases_edit): ?>
     <a href="<?php echo BASE_URL; ?>Purchases/add"><div class="button">Adicionar Compra</div></a>
+    
+    <input type="text" id="search" data-type="search_purchases"/>
 <?php endif; ?>
 
 <table width="100%" border="0">

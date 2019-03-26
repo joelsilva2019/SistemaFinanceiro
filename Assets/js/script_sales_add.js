@@ -63,7 +63,7 @@ function addProduct(obj){
             +"</td>"+
             "<td> R$ "+price+"</td>"+
             "<td class='sub_total'>R$ "+price+"</td>"+
-            "<td><a href='javascript:;' onclick='deleteProd(this)' >Excluir</a></td>"
+            "<td><a href='javascript:;' onclick='deleteProd(this)' class='button button_small'>Excluir</a></td>"
             +"</tr";
     
            $('#table_prod').append(tr);

@@ -174,14 +174,22 @@ input[type=submit],button,
     padding-right: 20px;
     display: inline-block;
 }
+input[type=submit]:hover{
+    background-color: #000363;
+}
 .button a{
     text-decoration: none;
     color: #fff;
 }
+.button:hover{
+    background-color: #000363;
+}
 .button_small{
     height: 30px;
     line-height: 30px;
+    text-decoration: none;
 }
+
 textarea{
     height: 100px;
 }

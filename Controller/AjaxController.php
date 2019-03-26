@@ -135,5 +135,29 @@ class AjaxController extends Model {
         echo json_encode($data);
     }
     
+    function search_purchases(){
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        $purchases = new Purchases();
+        if(isset($_GET['q']) && !empty($_GET['q'])){
+            
+            $q = addslashes($_GET['q']);
+            $purchases_search = $purchases->searchPurchasesByName($q, $users->getCompany());
+            
+            foreach ($purchases_search as $pitem){
+                $data[] = array(
+                    'name' => $pitem['salesman'],
+                    'link' => BASE_URL.'Purchases/purchases_salesman/'.$pitem['salesman'],
+                    'id'   => $pitem['id']    
+                );
+                
+            }
+            
+        }
+        
+        echo json_encode($data);
+    }
+    
     
 }

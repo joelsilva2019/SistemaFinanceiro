@@ -117,5 +117,39 @@ class PurchasesController extends Controller {
      } else {
             header("Location: " . BASE_URL);
        }
-   } 
+   }
+   
+   public function purchases_salesman($salesman){
+        
+        $data = [];
+        $users = new Users();
+        $users->setUser();
+        $purchases = new Purchases();
+        $data['purchases_salesman'] = $purchases->getSalesman($users->getCompany());
+        if(in_array($salesman, $data['purchases_salesman'])){
+        $companies = new Companies($users->getCompany());
+        $data['company_name'] = $companies->getName();
+        $data['user_image'] = $users->getImage();
+        $data['user_email'] = $users->getEmail();    
+            
+        $data['status_name'] = array(
+          0 => 'Aguardando Pagament.',
+          1 => 'Pago',
+          2 => 'Cancelado'  
+            
+        );   
+            
+         if($users->hasPermission('purchases_view')){   
+        
+           $data['purchases_edit'] = $users->hasPermission('purchases_edit');  
+           $data['purchases_salesman'] = $purchases->getPurchasesSalesman($salesman, $users->getCompany());  
+           $this->loadTemplate('Purchases_salesman', $data);
+         } else {
+             header("Location: ".BASE_URL);
+         }
+        
+       } else {
+            header("Location: ".BASE_URL); 
+        }
+    }
 }

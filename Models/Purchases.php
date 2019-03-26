@@ -75,6 +75,48 @@ class Purchases extends Model {
         return $array;
     }
     
+    public function getPurchasesSalesman($salesman, $id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT * FROM purchases WHERE salesman = :salesman AND id_company = :id_company");
+        $sql->bindValue(':salesman', $salesman);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
+    
+    public function getSalesman($id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT salesman FROM purchases WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+           foreach($sql->fetchAll() as $v){
+               $array[] = $v['salesman'];
+           }
+            
+        }        
+        return $array;
+    }
+    
+    public function searchPurchasesByName($name, $id_company){
+        $array = array();
+        $sql = $this->db->prepare("SELECT id, salesman FROM purchases WHERE salesman LIKE :salesman AND id_company = :id_company LIMIT 1");
+        $sql->bindValue(':salesman', '%'.$name.'%');
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+       
+        return $array;
+    }
+    
     public function changeStatus($status, $id,$id_company){
         
         $sql = $this->db->prepare("UPDATE purchases SET status = :status WHERE id = :id AND id_company = :id_company");
