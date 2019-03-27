@@ -23,7 +23,21 @@ class CategoryController extends Controller {
         if ($users->hasPermission('category_view')) {
             $category = new Category();
             
-            $data['category_list'] = $category->getList($users->getCompany());
+            $offset = 0;
+            $data['p'] = 1;
+            if(isset($_GET['p']) && !empty($_GET['p'])){
+                $data['p'] = intval($_GET['p']);
+                if($data['p'] == 0){
+                    $data['p'] = 1;
+                }
+            }
+            
+            $offset = (10 * ($data['p']-1));
+            
+            $data['category_count'] = $category->getCount($users->getCompany());
+            $data['p_count'] = ceil($data['category_count']/10);
+            
+            $data['category_list'] = $category->getList($users->getCompany(), $offset);
             $data['category_edit'] = $users->hasPermission('category_edit');
             $this->loadTemplate("Category", $data);
         }

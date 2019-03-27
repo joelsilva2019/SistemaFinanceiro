@@ -159,5 +159,52 @@ class AjaxController extends Model {
         echo json_encode($data);
     }
     
+    function search_category(){
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        $category = new Category();
+        if(isset($_GET['q']) && !empty($_GET['q'])){
+            
+            $q = addslashes($_GET['q']);
+            $category_search = $category->searchCategoryByName($q, $users->getCompany());
+            
+            foreach ($category_search as $citem){
+                $data[] = array(
+                    'name' => $citem['name'],
+                    'link' => BASE_URL.'Category/edit/'.$citem['id'],
+                    'id'   => $citem['id']
+                );
+                
+            }
+            
+        }
+        
+        echo json_encode($data);
+    }
+    
+    function search_users(){
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        if(isset($_GET['q']) && !empty($_GET['q'])){
+            
+            $q = addslashes($_GET['q']);
+            $users_search = $users->searchUsersByName($q, $users->getCompany());
+            
+            foreach ($users_search as $uitem){
+                $data[] = array(
+                    'name' => $uitem['email'],
+                    'link' => BASE_URL.'Users/edit/'.$uitem['id'],
+                    'id'   => $uitem['id']
+                );
+                
+            }
+            
+        }
+        
+        echo json_encode($data);
+    }
+    
     
 }

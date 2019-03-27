@@ -2,6 +2,8 @@
 
  <?php if($category_edit): ?>
         <a href="<?php echo BASE_URL; ?>Category/add"><div class="button">Adicionar Categoria</div></a>
+        
+        <input type="text" id="search" data-type="search_category"/>
         <?php endif; ?>
         
         <table width="100%" border="0">
@@ -29,4 +31,11 @@
 
             <?php endforeach; ?>
         </table>
+        
+    <div class="pagination">
+            <?php for($i=1;$i<=$p_count; $i++): ?>
+            <div class="pag_item <?php echo ($i == $p) ? 'pag_select': ''; ?>"><a href="<?php echo BASE_URL; ?>Category?p=<?php echo $i; ?>"><?php echo $i; ?></a></div>
+            <?php endfor; ?>
+    </div>
+        <div style="clear: both;"></div>
 

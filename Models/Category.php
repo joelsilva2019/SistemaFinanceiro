@@ -2,9 +2,9 @@
 
 class Category extends Model{
     
-    public function getList($id_company){
+    public function getList($id_company, $offset){
         $array = array();
-        $sql = $this->db->prepare("SELECT * FROM category WHERE id_company = :id_company");
+        $sql = $this->db->prepare("SELECT * FROM category WHERE id_company = :id_company LIMIT $offset, 10");
         $sql->bindValue(":id_company", $id_company);
         $sql->execute();
         
@@ -46,8 +46,32 @@ class Category extends Model{
         
         return $array;
     }
-
-        public function add($name, $id_company){     
+    
+    public function getCount($id_company){
+        $r = 0;
+        
+        $sql = $this->db->prepare("SELECT COUNT(*) as c FROM category WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        $row = $sql->fetch();
+        $r = $row['c'];
+        
+        return $r;
+    }
+    
+    public function searchCategoryByName($name, $id_company){
+        $array = [];
+        $sql = $this->db->prepare("SELECT id, name FROM category WHERE name LIKE :name AND id_company = :id_company");
+        $sql->bindValue(':name', '%'.$name.'%');
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+           $array = $sql->fetchAll();
+        }
+        return $array;   
+    }
+    public function add($name, $id_company){     
         $sql = $this->db->prepare("INSERT INTO category SET name = :name, id_company = :id_company");
         $sql->bindValue(":name", $name);
         $sql->bindValue(":id_company", $id_company);

@@ -86,6 +86,18 @@ class Sales extends Model {
         return $r;
     }
     
+    public function getCountSalesClient($id_client, $id_company){
+        $r = 0;
+        $sql = $this->db->prepare("SELECT COUNT(*) as c FROM sales WHERE id_client = :id_client AND id_company = :id_company");
+        $sql->bindValue(":id_client", $id_client);
+        $sql->bindValue(":id_company", $id_company);
+        $sql->execute();
+        $row = $sql->fetch();
+        $r = $row['c'];
+        
+        return $r;
+    }
+    
     public function getTotalRevenue($period1, $period2, $id_company){
         $float = 0;
         $sql = $this->db->prepare("SELECT SUM(total_price) as total FROM sales WHERE id_company = :id_company AND date_sale BETWEEN :period1 AND :period2");
@@ -180,11 +192,11 @@ class Sales extends Model {
         return $int;
     }
     
-    public function getSalesClient($id_client, $id_company){
+    public function getSalesClient($id_client, $id_company, $offset){
         $array = array();
         $sql = $this->db->prepare("SELECT clients.name, sales.id, sales.date_sale, sales.total_price, sales.status, sales.status_sale FROM sales "
                 . "LEFT JOIN clients ON clients.id = sales.id_client "
-                . "WHERE sales.id_client = :id_client AND sales.id_company = :id_company");
+                . "WHERE sales.id_client = :id_client AND sales.id_company = :id_company LIMIT $offset, 10");
         $sql->bindValue(':id_client', $id_client);
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();

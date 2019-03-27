@@ -116,11 +116,11 @@ class Users extends Model {
         
     }
     
-    public function getList($id_company){
+    public function getList($id_company, $offset){
        $array = array(); 
        $sql = $this->db->prepare("SELECT users.id, users.email, permission_groups.name"
                . " FROM users LEFT JOIN permission_groups ON permission_groups.id = users.id_group"
-               . " WHERE users.id_company = :id_company");
+               . " WHERE users.id_company = :id_company LIMIT $offset, 10");
        $sql->bindValue(':id_company', $id_company);
        $sql->execute();
         
@@ -145,6 +145,31 @@ class Users extends Model {
         }
         
         return $array;
+    }
+    
+    public function getCount($id_company){
+        $r = 0;
+        
+        $sql = $this->db->prepare("SELECT COUNT(*) as c FROM users WHERE id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        $row = $sql->fetch();
+        $r = $row['c'];
+        
+        return $r;
+    }
+    
+    public function searchUsersByName($email, $id_company){
+        $array = [];
+        $sql = $this->db->prepare("SELECT id, email FROM users WHERE email LIKE :email AND id_company = :id_company");
+        $sql->bindValue(':email', '%'.$email.'%');
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        if($sql->rowCount() > 0){
+           $array = $sql->fetchAll();
+        }
+        return $array;   
     }
 
     public function add($email, $pass, $groups, $id_company) {

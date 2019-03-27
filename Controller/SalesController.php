@@ -166,10 +166,25 @@ class SalesController extends Controller {
           2 => 'A receber'             
         );    
             
-         if($users->hasPermission('sales_view')){   
+         if($users->hasPermission('sales_view')){  
+             
+             $offset = 0;
+            $data['p'] = 1;
+            if(isset($_GET['p']) && !empty($_GET['p'])){
+                $data['p'] = intval($_GET['p']);
+                if($data['p'] == 0){
+                    $data['p'] = 1;
+                }
+            }
+            
+            $offset = (10 * ($data['p']-1));
+            
+           $data['sales_client_count'] = $sales->getCountSalesClient($id, $users->getCompany());
+           $data['p_count'] = ceil($data['sales_client_count']/10);
         
            $data['sales_edit'] = $users->hasPermission('sales_edit');  
-           $data['sales_client'] = $sales->getSalesClient($id, $users->getCompany());  
+           $data['id_client'] = $id;
+           $data['sales_client'] = $sales->getSalesClient($id, $users->getCompany(), $offset);  
            $this->loadTemplate('Sales_client', $data);
          } else {
              header("Location: ".BASE_URL);

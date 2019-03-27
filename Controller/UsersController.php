@@ -21,7 +21,21 @@ class UsersController extends Controller {
         $data['user_edit'] = $users->hasPermission('users_edit');
 
         if ($users->hasPermission('users_view')) {
-            $data['user_list'] = $users->getList($users->getCompany());
+            
+            
+            $offset = 0;
+            $data['p'] = 1;
+            if(isset($_GET['p']) && !empty($_GET['p'])){
+                $data['p'] = intval($_GET['p']);
+                if($data['p'] == 0){
+                    $data['p'] = 1;
+                }
+            }
+            
+            $offset = (10 * ($data['p']-1));
+            $data['user_list'] = $users->getList($users->getCompany(), $offset);
+            $data['users_count'] = $users->getCount($users->getCompany());
+            $data['p_count'] = ceil($data['users_count']/10);
             
             $this->loadTemplate("Users", $data);
         } else {

@@ -28,3 +28,9 @@
     <?php endforeach; ?>
 </table>
 
+    <div class="pagination">
+            <?php for($i=1;$i<=$p_count; $i++): ?>
+        <div class="pag_item <?php echo ($i == $p) ? 'pag_select': ''; ?>"><a href="<?php echo BASE_URL; ?>Sales/sales_client/<?php echo $id_client; ?>/?p=<?php echo $i; ?>"><?php echo $i; ?></a></div>
+            <?php endfor; ?>
+        </div>
+    <div style="clear: both;"></div>

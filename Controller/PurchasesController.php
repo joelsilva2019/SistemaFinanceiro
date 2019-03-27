@@ -141,8 +141,24 @@ class PurchasesController extends Controller {
             
          if($users->hasPermission('purchases_view')){   
         
+             $offset = 0;
+            $data['p'] = 1;
+            if(isset($_GET['p']) && !empty($_GET['p'])){
+                $data['p'] = intval($_GET['p']);
+                if($data['p'] == 0){
+                    $data['p'] = 1;
+                }
+            }
+            
+            $offset = (10 * ($data['p']-1));
+            
+           $data['purchases_salesman_count'] = $purchases->getCountPurchasesSalesman($salesman, $users->getCompany());
+           $data['p_count'] = ceil($data['purchases_salesman_count']/10);
+             
+             
+           $data['salesman'] = $salesman;  
            $data['purchases_edit'] = $users->hasPermission('purchases_edit');  
-           $data['purchases_salesman'] = $purchases->getPurchasesSalesman($salesman, $users->getCompany());  
+           $data['purchases_salesman'] = $purchases->getPurchasesSalesman($salesman, $users->getCompany(), $offset);  
            $this->loadTemplate('Purchases_salesman', $data);
          } else {
              header("Location: ".BASE_URL);

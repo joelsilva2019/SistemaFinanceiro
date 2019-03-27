@@ -12,8 +12,19 @@ class Purchases extends Model {
         $r = $row['c'];
         return $r;
     }
+    
+    public function getCountPurchasesSalesman($salesman, $id_company){
+        $r = 0;
+        $sql = $this->db->prepare("SELECT COUNT(*) as c FROM purchases WHERE salesman = :salesman AND id_company = :id_company");
+        $sql->bindValue(":salesman", $salesman);    
+        $sql->bindValue(":id_company", $id_company);
+        $sql->execute();
+        $row = $sql->fetch();
+        $r = $row['c'];
+        return $r;
+    }
 
-        public function getList($offset, $id_company){
+    public function getList($offset, $id_company){
         $array = array();
         $sql = $this->db->prepare("SELECT purchases.id, purchases.date_purchase, purchases.salesman, purchases.total_price, purchases.status, users.email"
                 . " FROM purchases LEFT JOIN users ON users.id = purchases.id_user "
@@ -75,9 +86,9 @@ class Purchases extends Model {
         return $array;
     }
     
-    public function getPurchasesSalesman($salesman, $id_company){
+    public function getPurchasesSalesman($salesman, $id_company, $offset){
         $array = array();
-        $sql = $this->db->prepare("SELECT * FROM purchases WHERE salesman = :salesman AND id_company = :id_company");
+        $sql = $this->db->prepare("SELECT * FROM purchases WHERE salesman = :salesman AND id_company = :id_company LIMIT $offset, 10");
         $sql->bindValue(':salesman', $salesman);
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();
