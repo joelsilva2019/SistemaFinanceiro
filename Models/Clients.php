@@ -172,4 +172,43 @@ class Clients extends Model {
         $sql->execute();
     }
     
+    
+    public function delete($id, $id_company){
+        
+        $sql = $this->db->prepare("DELETE FROM clients WHERE id = :id AND id_company = :id_company");
+        $sql->bindValue(':id', $id);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
+        $sql_advance = $this->db->prepare("DELETE FROM advance_clients WHERE id_client = :id_client AND id_company = :id_company");
+        $sql_advance->bindValue(':id_client', $id);
+        $sql_advance->bindValue(':id_company', $id_company);
+        $sql_advance->execute();
+     
+        $sql_sales = $this->db->prepare("SELECT id FROM sales WHERE id_client = :id_client AND id_company = :id_company");
+        $sql_sales->bindValue(':id_client', $id);
+        $sql_sales->bindValue(':id_company', $id_company);
+        $sql_sales->execute();
+        
+        if($sql_sales->rowCount() > 0){
+            $ids = array();
+            foreach ($sql_sales->fetchAll() as $v){
+                $ids[] = $v['id'];
+            }
+            
+            $sql_sales = $this->db->prepare("DELETE FROM sales_products WHERE id_sale IN (".implode(',', $ids).") AND id_company = :id_company");
+            $sql_sales->bindValue(':id_company', $id_company);
+            $sql_sales->execute();
+            
+            $sql_sales = $this->db->prepare("DELETE FROM sales WHERE id IN (".implode(',', $ids).") AND id_company = :id_company");
+            $sql_sales->bindValue(':id_company', $id_company);
+            $sql_sales->execute();
+            
+        }
+        
+        
+        
+        
+    }
+    
 }

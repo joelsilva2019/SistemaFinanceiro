@@ -132,7 +132,22 @@ class ClientsController extends Controller {
     }
     
     public function delete($id){
-        echo 'Falta fazer esse metodo';
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        $clients = new Clients();
+        $data['clients_id'] = $clients->getIds($users->getCompany());
+        if(in_array($id, $data['clients_id'])){
+
+        if ($users->hasPermission('clients_edit')) {          
+            $clients->delete($id, $users->getCompany());
+            header('Location: '.BASE_URL."Clients");
+        } else {
+            header("Location: " . BASE_URL);
+        }
+        } else {
+            header("Location: " . BASE_URL);
+        }
     }
     
     public function view($id){

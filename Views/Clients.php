@@ -27,7 +27,7 @@
                             <div class="button button_small">Editar</div></a>
 
                         <a href="<?php echo BASE_URL; ?>Clients/delete/<?php echo $client['id']; ?>" 
-                           onclick="return confirm('Tem certeza que deseja excluir ?')">
+                           onclick="return confirm('Tem certeza que deseja excluir ? irá apagar todas as vendas e informações desse cliente.')">
                             <div class="button button_small">Excluir</div></a>
                         <?php else: ?>
                          <a href="<?php echo BASE_URL; ?>Clients/view/<?php echo $client['id']; ?>">
