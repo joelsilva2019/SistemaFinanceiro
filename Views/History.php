@@ -1,6 +1,7 @@
 <h1>Histórico do Sistema</h1>
 
-<table width="100%">
+<table width="100%" class="table-responsive">
+    <tbody>
     <tr>
     <th>Usuário</th>
     <th>Produto</th>
@@ -15,6 +16,7 @@
         <td><?php echo date('d/m/Y H:i:s', strtotime($history['date_action'])); ?></td>
     </tr>
     <?php endforeach; ?>
+    </tbody>
 </table>
 
 <div class="pagination">

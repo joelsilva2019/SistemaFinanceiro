@@ -65,6 +65,8 @@ class InventoryController extends Controller {
                 $name = addslashes($_POST['name']);                
                 $quant = addslashes($_POST['quant']);
                 $min_quant = addslashes($_POST['min_quant']);
+                $sale_style = addslashes($_POST['sale_style']);
+                $prod_code = addslashes($_POST['prod_code']);
                 //FORMATANDO PREÇO DE COMPRA
                 $price_purchase = addslashes($_POST['price_purchase']);
                 $price_purchase = str_replace(".", "", $price_purchase);
@@ -76,7 +78,7 @@ class InventoryController extends Controller {
                 
                 $id_category = addslashes($_POST['category']);
                 
-                $inventory->add($users->getCompany(),$id_category, $users->getId(), $name, $price, $price_purchase, $quant, $min_quant);
+                $inventory->add($users->getCompany(),$id_category, $users->getId(), $name, $price, $price_purchase, $quant, $min_quant, $sale_style,$prod_code);
                 header("Location: ".BASE_URL."Inventory");
             }
             
@@ -108,18 +110,20 @@ class InventoryController extends Controller {
                 $name = addslashes($_POST['name']);
                 $quant = addslashes($_POST['quant']);
                 $min_quant = addslashes($_POST['min_quant']);
-                
+                $sale_style = addslashes($_POST['sale_style']);
+                $prod_code = addslashes($_POST['prod_code']);
+                //FORMATANDO O PREÇO DE VENDA DO PRODUTO
                 $price = addslashes($_POST['price']);
                 $price = str_replace(".", "", $price);
                 $price = str_replace(",", ".", $price);
-                
+                //FORMATANDO O PREÇO DE COMPRA DO PRODUTO
                 $price_purchase = addslashes($_POST['price_purchase']);
                 $price_purchase = str_replace(".", "", $price_purchase);
                 $price_purchase = str_replace(",", ".", $price_purchase);
                 
                 $id_category = addslashes($_POST['category']);
                 
-                $inventory->edit($id,$users->getCompany(),$id_category, $users->getId(), $name, $price, $price_purchase, $quant, $min_quant);
+                $inventory->edit($id,$users->getCompany(),$id_category, $users->getId(), $name, $price, $price_purchase, $quant, $min_quant, $sale_style, $prod_code);
                 header("Location: ".BASE_URL."Inventory");
             }
             $data['category_list'] = $category->getList($users->getCompany());

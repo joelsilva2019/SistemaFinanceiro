@@ -62,16 +62,27 @@ class PurchasesController extends Controller {
         if ($users->hasPermission('purchases_edit')) {
             $purchases = new Purchases();
             
-            if(isset($_POST['quant']) && !empty($_POST['quant'])){
+            if(isset($_POST['salesman']) && !empty($_POST['salesman'])){
                 
                 $status = addslashes($_POST['status']);
-                $quant = $_POST['quant'];
+                if(isset($_POST['quant'])){
+                   $quant = $_POST['quant'];
+                } else {
+                   $quant = 0;
+                }
                 $salesman = addslashes($_POST['salesman']);
                 
+                $countArray = (is_array($quant) ? count($quant) : 0);
+                if($countArray > 0){
                 $purchases->add($users->getCompany(),$users->getId(),$salesman, $quant, $status);
                 header("Location: ".BASE_URL."Purchases");
+                } else {
+                  $data['erro'] = "Você não pode adicionar uma venda sem produtos !!";  
+                }
                 
             }
+                
+            
          
             $this->loadTemplate("Purchases_add", $data);
         } else {

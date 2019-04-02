@@ -1,3 +1,4 @@
+Header Set Access-Control-Allow-Origin "https://your.external.resource.tld"
 RewriteEngine On
 Rewritecond %{REQUEST_FILENAME} !-f
 Rewritecond %{REQUEST_FILENAME} !-d

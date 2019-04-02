@@ -89,6 +89,12 @@ class Inventory extends Model{
         
         return $array;
     }
+    
+    public function deleteHistory($date, $id_company){
+        $sql = $this->db->prepare("DELETE FROM inventory_history WHERE date_action < '$date' AND id_company = :id_company");
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();       
+    }
 
     public function searchInventoryByName($name, $id_company){
         
@@ -160,9 +166,9 @@ class Inventory extends Model{
         
     }
 
-    public function add($id_company,$id_category, $id_user, $name, $price,$price_purchase, $quant, $min_quant){
+    public function add($id_company,$id_category, $id_user, $name, $price,$price_purchase, $quant, $min_quant,$sale_style, $prod_code){
         
-        $sql = $this->db->prepare("INSERT INTO inventory SET id_company = :id_company, id_category = :id_category, name = :name, price = :price, price_purchase = :price_purchase, quant = :quant, min_quant = :min_quant");
+        $sql = $this->db->prepare("INSERT INTO inventory SET id_company = :id_company, id_category = :id_category, name = :name, price = :price, price_purchase = :price_purchase, quant = :quant, min_quant = :min_quant, sale_style = :sale_style, prod_code = :prod_code");
         $sql->bindValue(':id_company', $id_company);
         $sql->bindValue(':id_category', $id_category);
         $sql->bindValue(':name', $name);
@@ -170,6 +176,8 @@ class Inventory extends Model{
         $sql->bindValue(':price_purchase', $price_purchase);
         $sql->bindValue(':quant', $quant);
         $sql->bindValue(':min_quant', $min_quant);
+        $sql->bindValue(':sale_style', $sale_style);
+        $sql->bindValue(':prod_code', $prod_code);
         $sql->execute();
         
         $id_product = $this->db->lastInsertId();
@@ -177,15 +185,17 @@ class Inventory extends Model{
      
     }
     
-    public function edit($id, $id_company, $id_category,$id_user, $name, $price, $price_purchase, $quant, $min_quant){
+    public function edit($id, $id_company, $id_category,$id_user, $name, $price, $price_purchase, $quant, $min_quant, $sale_style, $prod_code){
         
-        $sql = $this->db->prepare("UPDATE inventory SET id_category = :id_category, name = :name, price = :price, price_purchase = :price_purchase, quant = :quant, min_quant = :min_quant WHERE id = :id AND id_company = :id_company");
+        $sql = $this->db->prepare("UPDATE inventory SET id_category = :id_category, name = :name, price = :price, price_purchase = :price_purchase, quant = :quant, min_quant = :min_quant, sale_style = :sale_style, prod_code = :prod_code WHERE id = :id AND id_company = :id_company");
         $sql->bindValue(':id_category', $id_category);
         $sql->bindValue(':name', $name);
         $sql->bindValue(':price', $price);
         $sql->bindValue(':price_purchase', $price_purchase);
         $sql->bindValue(':quant', $quant);
         $sql->bindValue(':min_quant', $min_quant);
+        $sql->bindValue(':sale_style', $sale_style);
+        $sql->bindValue(':prod_code', $prod_code);
         $sql->bindValue(':id', $id);
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();
@@ -202,8 +212,5 @@ class Inventory extends Model{
         $this->setLog($id_company, $id, $id_user, 'del');
         
     }
-    
-    
-    
     
 }

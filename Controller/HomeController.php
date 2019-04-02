@@ -40,6 +40,7 @@ class HomeController extends Controller {
         $data['expanses_list'] = $purchases->getExpansesList(date("Y-m-d", strtotime("-30days")), date("Y-m-d"), $users->getCompany());
         $data['status_list'] = $sales->getQuantStatusList(date("Y-m-d", strtotime("-30days")), date("Y-m-d"), $users->getCompany());
         $data['status_purchase_list'] = $purchases->getQuantPurchasesStatus(date("Y-m-d", strtotime("-30days")), date("Y-m-d"), $users->getCompany());
+        $inventory->deleteHistory(date("Y-m-d H:i:s", strtotime("-7days")), $users->getCompany());
         
         $this->loadTemplate("Home", $data);
     }
@@ -73,7 +74,7 @@ class HomeController extends Controller {
         $offset = (10 * ($data['p'] - 1));
 
         
-        $data['history_list'] = $inventory->getHistory(date("Y-m-d", strtotime("-7days")), date("Y-m-d"), $users->getCompany(), $offset);
+        $data['history_list'] = $inventory->getHistory(date("Y-m-d", strtotime("-7days")), date("Y-m-d"), $users->getCompany(), $offset);        
         $data['history_count'] = $inventory->getHistoryCount(date("Y-m-d", strtotime("-7days")), date("Y-m-d"), $users->getCompany());
         $data['p_count'] = ceil($data['history_count'] / 10);
 

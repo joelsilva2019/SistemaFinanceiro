@@ -1,8 +1,10 @@
 <h1>Compras - Adicionar</h1>
 
 <form method="POST">
-    
-    <input type="text" name="salesman" placeholder="Nome do vendedor"/><br/><br/>
+    <?php if(!empty($erro)): ?>
+    <div class="warn"><?php echo $erro; ?></div>
+    <?php endif; ?>
+    <input type="text" name="salesman" placeholder="Nome do vendedor" required /><br/><br/>
     
     <input type="text" name="total_price" placeholder="Preço Total 0,00" disabled="disabled"/><br/><br/>
     
@@ -16,7 +18,7 @@
     <hr/>
     <fieldset>
         <legend>Adicionar Produto</legend>
-        <input type="text" id="add_prod" data-type="search_inventory"/> 
+        <input type="text" id="add_prod" data-type="search_inventory" autocomplete="off"/> 
     </fieldset><br/>
     <table width="100%" border="0" id="table_prod">
         <tr>

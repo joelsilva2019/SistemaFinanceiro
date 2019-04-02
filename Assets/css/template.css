@@ -24,6 +24,7 @@ body{
     text-align: center;
     font-size: 13px;
     color: #fff;
+    overflow: hidden;
 }
 .user_img{
     text-align: center;
@@ -88,6 +89,9 @@ body{
     background-image: url('../images/icon/report.png');
 }
 .menu_area li:nth-child(10){
+    background-image: url('../images/icon/receipt.png');
+}
+.menu_area li:nth-child(11){
     background-image: url('../images/icon/logout.png');
 }
 .user_area{
@@ -195,27 +199,41 @@ textarea{
 }
 table{
     margin-top: 10px;
+    background:white;
 }
 table th{
     height: 40px;
     line-height: 40px;
     text-align: left;
-    background-color: #323b45;
-    color: #fff;
+    color: #000;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 3px;
-    
+    border-radius: 3px; 
+    border-bottom: 1px solid #ccc;
 }
 table td{
     height: 40px;
     line-height: 40px;
     text-align: left;
     background-color: #FFF;
-    border: 1px solid #ccc;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 3px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+.tab_name{
+    margin-top: 10px;
+    background-color: #fff;
+    padding-left: 10px;
+    padding-top: 2px;
+    border-radius: 8px;
+}
+.tab_name h1 span{
+    color: #eff9ff;
+}
+.name_table{
+    color: #a7a8af;
 }
 .p_item{
     height: 25px;
@@ -433,3 +451,167 @@ table td{
     border-bottom: 2px solid #ccc;
     background-color: #fff;
 }
+.issuer_nfe{
+    border-bottom: 1px solid #ccc;
+}
+.issuer_nfe select{
+    margin-bottom: 10px;
+}
+.menu-mobile{
+    display: none;
+}
+
+@media only screen and (min-width:632px) and (max-width:906px){
+    
+    .grid-2{
+        display: none;
+    } 
+    .grid-1{
+        margin:auto;
+        float: none;
+        width: 400px;
+        margin-bottom: 10px;;
+    }
+    .db-grid-area{
+        margin-left: 0px;
+        margin-right: 0px
+    }
+    
+    .table-responsive {
+       display: block;
+       position: relative;
+       width: 100%;
+    }
+    
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive th,
+    .table-responsive td,
+    .table-responsive tr {
+      display: block;
+    }
+    
+    .table-responsive td,
+    .table-responsive th {
+       height: 35px;
+    }
+    
+    .table-responsive thead {
+      float: left;
+    }
+    
+    .table-responsive tbody {
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+     -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+    
+    .table-responsive tbody tr {
+       display: inline-block;
+    }
+    #search{
+      float: none;
+    }
+    .button{
+        margin-bottom: 5px;
+    }
+    input[type=date]{
+        width: 100%;
+    }
+    .menu_area li:nth-child(9){
+     display: none;
+   }
+   .menu_area li:nth-child(10){
+     display: none;
+   }
+   
+   .menu-mobile{
+    display: none;
+   }
+}
+
+@media only screen and (max-width:632px){
+    
+    .grid-2{
+        display: none;
+    } 
+    .grid-1{
+        margin:auto;
+        width: 320px;
+        margin-bottom: 10px;;
+    }
+    .container{
+       padding-left: 0;
+       top: 40px;
+    }
+    .db-grid-area{
+        margin-left: 0px;
+        margin-right: 0px
+    }
+    
+    .table-responsive {
+       display: block;
+       position: relative;
+       width: 100%;
+    }
+    
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive th,
+    .table-responsive td,
+    .table-responsive tr {
+      display: block;
+    }
+    
+    .table-responsive td,
+    .table-responsive th {
+       height: 35px;
+    }
+    
+    .table-responsive thead {
+      float: left;
+    }
+    
+    .table-responsive tbody {
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+     -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+    
+    .table-responsive tbody tr {
+       display: inline-block;
+    }
+    #search{
+      float: none;
+    }
+    .button{
+        margin-bottom: 5px;
+    }
+    input[type=date]{
+        width: 100%;
+    }
+    .menu_area li:nth-child(9){
+     display: none;
+   }
+   .menu_area li:nth-child(10){
+     display: none;
+   }
+   
+   .menu-mobile{
+    display: block;
+    position: absolute;
+    z-index: 10;
+   }
+   
+   .left_menu{
+       position: absolute;
+       top: 40px;
+       z-index: 9;
+   }
+    
+}
+

@@ -14,7 +14,7 @@
     <?php foreach ($sales_client as $sale): ?>
     
     <tr>
-        <td><?php echo $sale['name']; ?></td>
+        <td><?php echo ($sale['name'] != '' ? $sale['name'] : 'Desconhecido'); ?></td>
         <td><?php echo date('d/m/Y', strtotime($sale['date_sale'])); ?></td>
         <td><?php echo $status_name[$sale['status']]; ?></td>
         <td><?php echo $status_sale_name[$sale['status_sale']]; ?></td>

@@ -234,7 +234,7 @@ class Sales extends Model {
         $sql->execute();
     }
 
-    public function add($id_company, $id_client, $id_user, $quant, $status,$status_sale){
+    public function add($id_company, $id_client = null, $id_user, $quant, $status,$status_sale){
         $inventory = new Inventory();
         $sql = $this->db->prepare("INSERT INTO sales SET id_company = :id_company, id_client = :id_client, id_user = :id_user, date_sale = NOW(), total_price = :total_price, status = :status, status_sale = :status_sale");
         $sql->bindValue(':id_company', $id_company);

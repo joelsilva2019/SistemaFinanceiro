@@ -1,12 +1,18 @@
-<h1>Vendas</h1>
 
 <?php if($sales_edit): ?>
     <a href="<?php echo BASE_URL; ?>Sales/add"><div class="button">Adicionar Venda</div></a>
     
-    <input type="text" id="search" data-type="search_sales"/>
+    <input type="text" id="search" data-type="search_sales" autocomplete="off"/>
 <?php endif; ?>
-        
-<table width="100%" border="0">
+
+<div class="tab_name">
+    <div class="name_table">
+    <h1>Produtos Vendidos</h1>
+    <span>Aqui você pode gerenciar os produtos da sua empresa</span>
+    </div><br/>
+
+<table width="100%" border="0" cellspacing="0" class="table-responsive">
+    <tbody>
     <tr>
         <th>Nome do Cliente</th>
         <th>Data</th>
@@ -17,9 +23,8 @@
     </tr>
 
     <?php foreach ($sales_list as $sale): ?>
-    
     <tr>
-        <td><?php echo $sale['name']; ?></td>
+        <td><?php echo ($sale['name'] != '' ? $sale['name'] : 'Desconhecido'); ?></td>
         <td><?php echo date('d/m/Y', strtotime($sale['date_sale'])); ?></td>
         <td><?php echo $status_name[$sale['status']]; ?></td>
         <td><?php echo $status_sale_name[$sale['status_sale']]; ?></td>
@@ -31,7 +36,10 @@
         </td>
     </tr>    
     <?php endforeach; ?>
+    </tbody>
 </table>
+</div>    
+    
     <div class="pagination">
             <?php for($i=1;$i<=$p_count; $i++): ?>
             <div class="pag_item <?php echo ($i == $p) ? 'pag_select': ''; ?>"><a href="<?php echo BASE_URL; ?>Sales?p=<?php echo $i; ?>"><?php echo $i; ?></a></div>

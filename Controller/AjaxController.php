@@ -97,6 +97,20 @@ class AjaxController extends Model {
         
     }
     
+    public function del_advance(){
+        $data = array();
+        $users = new Users();
+        $users->setUser();
+        $clients = new Clients();
+        
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+          $id = addslashes($_POST['id']); 
+          $clients->delAdvance($users->getCompany(), $id);
+            
+        }
+        
+    }
+    
     public function getAdvances(){
         $data = array();
         $users = new Users();

@@ -2,6 +2,18 @@ function startAdvances() {
     setTimeout(getAdvances, 2000);
 }
 
+function delAdvance(obj){
+   
+    var id = $(obj).closest('tr').attr('data-id');
+   
+   $.ajax({
+       url:'http://localhost/ContaAzul/Ajax/del_advance',
+       type:'POST',
+       data:{id:id}
+   });
+   
+   $(obj).closest('tr').remove();
+}
 
 
 function getAdvances() {
@@ -19,7 +31,7 @@ function getAdvances() {
             if (json.advances.length > 0) {
                 
                 for (var i in json.advances) { 
-                  $('#table_advance').append('<tr class="advance-item"><td>R$ ' + json.advances[i].advance + '</td><td>' + json.advances[i].date_advance + '</td></tr>');
+                  $('#table_advance').append('<tr class="advance-item" data-id="'+json.advances[i].id+'"><td>R$ ' + json.advances[i].advance + '</td><td>' + json.advances[i].date_advance + '</td><td><button class="button" onclick="delAdvance(this)">Excluir</button></td></tr>');
                 }
             }
             setTimeout(getAdvances, 2000);

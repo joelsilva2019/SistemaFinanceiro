@@ -1,7 +1,7 @@
 <h1>Vendas - Editar</h1>
 
 <strong>Nome do Cliente: </strong><br/>
-<?php echo $sales_info['info']['client_name']; ?><br/><br/>
+<?php echo ($sales_info['info']['client_name'] != '' ? $sales_info['info']['client_name'] : 'Desconhecido'); ?><br/><br/>
 <strong>Data da Venda: </strong><br/>
 <?php echo date('d/m/Y', strtotime($sales_info['info']['date_sale'])); ?><br/><br/>
 
@@ -49,6 +49,7 @@ R$ <?php echo number_format($sales_info['info']['total_price'], 2, ',', '.'); ?>
     <tr>
     <th>Valor</th>
     <th>Data</th>
+    <th>Ações</th>
     </tr>
 </table>
 

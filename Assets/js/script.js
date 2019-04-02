@@ -1,11 +1,3 @@
-$(function(){
-var input = document.getElementById('input-file');
-    var fileName = document.getElementById('file-name');
-
-    input.addEventListener('change', function () {
-        fileName.textContent = this.value;
-    });
-});
 
 $(function () {
 
@@ -77,5 +69,18 @@ $(function () {
      });
 
 });
+
+
+function abrirMenu(){
+    
+   var menu = document.getElementById("menu-left");
+   
+   if(menu.style.display == "none"){
+       menu.style.display = "block";
+   }else{
+       menu.style.display = "none"; 
+   }
+    
+}
 
 

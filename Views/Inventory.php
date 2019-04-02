@@ -1,11 +1,17 @@
-<h1>Estoque</h1>
 
 <?php if ($inventory_edit): ?>
     <a href="<?php echo BASE_URL; ?>Inventory/add"><div class="button">Adicionar Produto</div></a>
 
-<input type="text" id="search" data-type="search_inventory"/>
+<input type="text" id="search" data-type="search_inventory" autocomplete="off" />
 <?php endif; ?>
-<table width="100%" border="0">
+
+<div class="tab_name">
+    <div class="name_table">
+    <h1>Controle de estoque</h1>
+    <span>Aqui você pode gerenciar os produtos da sua empresa</span>
+    </div><br/>
+<table width="100%" border="0" class="table-responsive">
+    <tbody>
     <tr>
         <th>Nome</th>
         <th>Categoria</th>
@@ -44,8 +50,9 @@
                 </td>
         </tr>
     <?php endforeach; ?><br/>
+</tbody>
 </table>    
-
+</div>
         <div class="pagination">
             <?php for($i=1;$i<=$p_count; $i++): ?>
             <div class="pag_item <?php echo ($i == $p) ? 'pag_select': ''; ?>"><a href="<?php echo BASE_URL; ?>Inventory?p=<?php echo $i; ?>"><?php echo $i; ?></a></div>

@@ -1,9 +1,9 @@
 <h1>Clientes - Editar</h1>
 
 <form method="POST">
-    <input type="text" name="name" value="<?php echo $client_info['name']; ?>" required/><br/><br/>
-    <input type="email" name="email" value="<?php echo $client_info['email']; ?>" /><br/><br/>
-    <input type="text" name="phone" value="<?php echo $client_info['phone']; ?>" /><br/><br/>
+    <input type="text" name="name" value="<?php echo $client_info['name']; ?>" required placeholder="*Nome"/><br/><br/>
+    <input type="email" name="email" value="<?php echo $client_info['email']; ?>" placeholder="E-mail"/><br/><br/>
+    <input type="text" name="phone" value="<?php echo $client_info['phone']; ?>" placeholder="Telefone"/><br/><br/>
 
     <label style="font-size: 17px;">*Estrelas do Cliente:</label><br/><br/>
     <select name="stars">
@@ -21,14 +21,14 @@
         <?php echo $client_info['internal_obs']; ?>
     </textarea><br/><br/>
 
-    <input type="text" name="address_zipcode" value="<?php echo $client_info['address_zipcode']; ?>" /><br/><br/>
-    <input type="text" name="address" value="<?php echo $client_info['address']; ?>" /><br/><br/>
-    <input type="text" name="address_number" value="<?php echo $client_info['address_number']; ?>"/><br/><br/>
-    <input type="text" name="address2" value="<?php echo $client_info['address2']; ?>" /><br/><br/>
-    <input type="text" name="address_neighb" value="<?php echo $client_info['address_neighb']; ?>" /><br/><br/>
-    <input type="text" name="address_city" value="<?php echo $client_info['address_city']; ?>" /><br/><br/>
-    <input type="text" name="address_state" value="<?php echo $client_info['address_state']; ?>" /><br/><br/>
-    <input type="text" name="address_country" value="<?php echo $client_info['address_country']; ?>" /><br/><br/>
+    <input type="text" name="address_zipcode" value="<?php echo $client_info['address_zipcode']; ?>" placeholder="Cep" /><br/><br/>
+    <input type="text" name="address" value="<?php echo $client_info['address']; ?>" placeholder="Endereço" /><br/><br/>
+    <input type="text" name="address_number" value="<?php echo $client_info['address_number']; ?>"placeholder="Número" /><br/><br/>
+    <input type="text" name="address2" value="<?php echo $client_info['address2']; ?>" placeholder="Complemento" /><br/><br/>
+    <input type="text" name="address_neighb" value="<?php echo $client_info['address_neighb']; ?>" placeholder="Bairro" /><br/><br/>
+    <input type="text" name="address_city" value="<?php echo $client_info['address_city']; ?>" placeholder="Cidade" /><br/><br/>
+    <input type="text" name="address_state" value="<?php echo $client_info['address_state']; ?>" placeholder="Estado" /><br/><br/>
+    <input type="text" name="address_country" value="<?php echo $client_info['address_country']; ?>" placeholder="País" /><br/><br/>
 
     <input type="submit" value="Editar"/>
 </form>

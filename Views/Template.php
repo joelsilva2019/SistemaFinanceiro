@@ -11,7 +11,8 @@
     </head>
 
     <body>
-        <div class="left_menu">
+        <img src="<?php echo BASE_URL; ?>Assets/images/menu-mobile.png" width="40" height="40" class="menu-mobile" onclick="abrirMenu()" />
+        <div class="left_menu" id="menu-left">
             <div class="user_area">
                 
                 <div class="user_img">
@@ -32,6 +33,7 @@
                     <li><a href="<?php echo BASE_URL; ?>users">Usuários</a></li>
                     <li><a href="<?php echo BASE_URL; ?>Permissions">Permissões</a></li>
                     <li><a href="<?php echo BASE_URL; ?>Report">Relátorios</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>Invoice">Nota Fiscal</a></li>
                     <li><a href="<?php echo BASE_URL; ?>Login/logout">Sair</a></li>
                 </ul>
             </div>

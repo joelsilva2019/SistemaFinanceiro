@@ -57,7 +57,7 @@ class SalesController extends Controller {
         
     }        
         
-        function add() {
+    function add() {
          
         $data = array();
         $users = new Users();
@@ -70,15 +70,23 @@ class SalesController extends Controller {
         if ($users->hasPermission('sales_edit')) {
             $sales = new Sales();
             
-            if(isset($_POST['client_id']) && !empty($_POST['client_id'])){
+            if(isset($_POST['client_id']) && !empty($_POST['client_id']) || isset($_POST['client_id']) && empty($_POST['client_id'])){
+                
                 $id_client = addslashes($_POST['client_id']);
                 $status = addslashes($_POST['status']);
                 $status_sale = addslashes($_POST['status_sale']);
-                $quant = $_POST['quant'];
-               
-                
+                if(isset($_POST['quant'])){
+                   $quant = $_POST['quant'];   
+                } else {
+                   $quant = [];
+                }
+                $countArray = (is_array($quant) ? count($quant) : 0);
+                if($countArray > 0){
                 $sales->add($users->getCompany(), $id_client, $users->getId(), $quant, $status, $status_sale);
                 header("Location: ".BASE_URL."Sales");
+                } else {
+                $data['erro'] = "Você não pode adicionar uma venda sem produtos !!";    
+                }
                 
             }
          

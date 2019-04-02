@@ -11,6 +11,14 @@ class Clients extends Model {
         $sql->execute();      
     }
     
+    public function delAdvance($id_company, $id){
+        $sql = $this->db->prepare("DELETE FROM advance_clients WHERE id = :id AND id_company = :id_company");
+        $sql->bindValue(':id', $id);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+    }
+
+
     public function getAdvance($id_sale, $id_company){
         
         $array = array();
@@ -22,6 +30,9 @@ class Clients extends Model {
         
         if($sql->rowCount() > 0){
             $array = $sql->fetchAll();
+            foreach ($array as $c => $v){
+                $array[$c]['date_advance'] = date('d/m/Y H:i:s', strtotime($v['date_advance']));
+            }
         }
         
         return $array; 

@@ -2,9 +2,13 @@
 
 class Category extends Model{
     
-    public function getList($id_company, $offset){
+    public function getList($id_company, $offset = 0){
         $array = array();
+        if($offset > 0){
         $sql = $this->db->prepare("SELECT * FROM category WHERE id_company = :id_company LIMIT $offset, 10");
+        } else {
+        $sql = $this->db->prepare("SELECT * FROM category WHERE id_company = :id_company");    
+        }
         $sql->bindValue(":id_company", $id_company);
         $sql->execute();
         
