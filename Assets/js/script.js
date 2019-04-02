@@ -1,3 +1,20 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+    
+    function abrirMenu(){
+
+       var menu = document.getElementById("menu-left");
+
+       if(menu.style.display == "none" || menu.style.display == ""){
+           menu.style.display = "block";
+       }else{
+           menu.style.display = "none"; 
+       }
+
+    }
+
+    document.getElementById("action").addEventListener("click", abrirMenu, false);
+
+});
 
 $(function () {
 
@@ -69,18 +86,5 @@ $(function () {
      });
 
 });
-
-
-function abrirMenu(){
-    
-   var menu = document.getElementById("menu-left");
-   
-   if(menu.style.display == "none"){
-       menu.style.display = "block";
-   }else{
-       menu.style.display = "none"; 
-   }
-    
-}
 
 

@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <img src="<?php echo BASE_URL; ?>Assets/images/menu-mobile.png" width="40" height="40" class="menu-mobile" onclick="abrirMenu()" />
+        <div class="menu-mobile-area"><img src="<?php echo BASE_URL; ?>Assets/images/icon/category.png" width="40" height="40" class="menu-mobile" id="action" /></div>
         <div class="left_menu" id="menu-left">
             <div class="user_area">
                 

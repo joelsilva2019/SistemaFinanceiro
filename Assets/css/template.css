@@ -13,6 +13,7 @@ body{
     left: 0;
     bottom: 0;
     top: 0;
+    display: block;
 }
 .container{
     padding-left: 200px;
@@ -461,6 +462,11 @@ table td{
     display: none;
 }
 
+ .left_menu{
+    display: block;
+  }
+
+
 @media only screen and (min-width:632px) and (max-width:906px){
     
     .grid-2{
@@ -529,6 +535,9 @@ table td{
    
    .menu-mobile{
     display: none;
+   }
+   .left_menu{
+       display: block !important;
    }
 }
 
@@ -605,13 +614,25 @@ table td{
     display: block;
     position: absolute;
     z-index: 10;
+    left: 10px;
    }
    
    .left_menu{
        position: absolute;
        top: 40px;
        z-index: 9;
+       display:none;
    }
-    
+   
+   .menu-mobile-area{
+       height: 40px;
+       background-color: #080630;
+   }
+   .notification{
+       top: 62px;
+   }
+   .notification_count{
+       top: 62px;
+   } 
 }
 
