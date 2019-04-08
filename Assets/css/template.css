@@ -4,6 +4,7 @@ body{
     padding: 0;
     font-size: 13px;
     font-family: Arial;
+    font-family: "Open Sans";
     background-color: #eee;
 }
 .left_menu{
@@ -101,7 +102,7 @@ body{
     background-color: #0a0825;
 }
 .area{
-   padding: 15px;
+    padding: 15px;
 }
 .tab_area{
     height: 40px;
@@ -147,17 +148,17 @@ input[type='file'] {
 }
 
 .input-wrapper label {
-  background-color: #3498db;
-  border-radius: 5px;
-  color: #fff;
-  margin: 10px;
-  padding: 10px 200px;
-  cursor: pointer;
-      
+    background-color: #3498db;
+    border-radius: 5px;
+    color: #fff;
+    margin: 10px;
+    padding: 10px 200px;
+    cursor: pointer;
+
 }
 
 .input-wrapper label:hover {
-  background-color: #2980b9
+    background-color: #2980b9
 }
 
 input[type=date]{
@@ -201,6 +202,7 @@ textarea{
 table{
     margin-top: 10px;
     background:white;
+    font-size: 15px;
 }
 table th{
     height: 40px;
@@ -288,7 +290,7 @@ table td{
     position: absolute;
     background-color: #fff;
     border:1px solid #ccc;
-    
+    z-index: 10;
 }
 
 .si{
@@ -318,7 +320,7 @@ table td{
 
     height: 38px;
     line-height: 38px;
-    
+
 }
 .input_prod{
     width: 60px !important;
@@ -415,7 +417,7 @@ table td{
 }
 .db-info-body{
     padding: 10px;
-   
+
 }
 .notification{
     width: 15px;
@@ -462,13 +464,27 @@ table td{
     display: none;
 }
 
- .left_menu{
+.left_menu{
     display: block;
-  }
+}
+
+.total-price{
+    position: fixed;
+    width: 210px;
+    bottom: 0;
+    right: -180px;
+    background-color: #009933;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    font-size: 15px;
+    margin-top: 40px;
+    margin-right: 200px;
+}
 
 
 @media only screen and (min-width:632px) and (max-width:906px){
-    
+
     .grid-2{
         display: none;
     } 
@@ -482,43 +498,43 @@ table td{
         margin-left: 0px;
         margin-right: 0px
     }
-    
+
     .table-responsive {
-       display: block;
-       position: relative;
-       width: 100%;
+        display: block;
+        position: relative;
+        width: 100%;
     }
-    
+
     .table-responsive thead,
     .table-responsive tbody,
     .table-responsive th,
     .table-responsive td,
     .table-responsive tr {
-      display: block;
+        display: block;
     }
-    
+
     .table-responsive td,
     .table-responsive th {
-       height: 35px;
+        height: 35px;
     }
-    
+
     .table-responsive thead {
-      float: left;
+        float: left;
     }
-    
+
     .table-responsive tbody {
-      width: auto;
-      position: relative;
-      overflow-x: auto;
-     -webkit-overflow-scrolling: touch;
-      white-space: nowrap;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
     }
-    
+
     .table-responsive tbody tr {
-       display: inline-block;
+        display: inline-block;
     }
     #search{
-      float: none;
+        float: none;
     }
     .button{
         margin-bottom: 5px;
@@ -527,22 +543,22 @@ table td{
         width: 100%;
     }
     .menu_area li:nth-child(9){
-     display: none;
-   }
-   .menu_area li:nth-child(10){
-     display: none;
-   }
-   
-   .menu-mobile{
-    display: none;
-   }
-   .left_menu{
-       display: block !important;
-   }
+        display: none;
+    }
+    .menu_area li:nth-child(10){
+        display: none;
+    }
+
+    .menu-mobile{
+        display: none;
+    }
+    .left_menu{
+        display: block !important;
+    }
 }
 
 @media only screen and (max-width:632px){
-    
+
     .grid-2{
         display: none;
     } 
@@ -552,50 +568,50 @@ table td{
         margin-bottom: 10px;;
     }
     .container{
-       padding-left: 0;
-       top: 40px;
+        padding-left: 0;
+        top: 40px;
     }
     .db-grid-area{
         margin-left: 0px;
         margin-right: 0px
     }
-    
+
     .table-responsive {
-       display: block;
-       position: relative;
-       width: 100%;
+        display: block;
+        position: relative;
+        width: 100%;
     }
-    
+
     .table-responsive thead,
     .table-responsive tbody,
     .table-responsive th,
     .table-responsive td,
     .table-responsive tr {
-      display: block;
+        display: block;
     }
-    
+
     .table-responsive td,
     .table-responsive th {
-       height: 35px;
+        height: 35px;
     }
-    
+
     .table-responsive thead {
-      float: left;
+        float: left;
     }
-    
+
     .table-responsive tbody {
-      width: auto;
-      position: relative;
-      overflow-x: auto;
-     -webkit-overflow-scrolling: touch;
-      white-space: nowrap;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
     }
-    
+
     .table-responsive tbody tr {
-       display: inline-block;
+        display: inline-block;
     }
     #search{
-      float: none;
+        float: none;
     }
     .button{
         margin-bottom: 5px;
@@ -604,35 +620,36 @@ table td{
         width: 100%;
     }
     .menu_area li:nth-child(9){
-     display: none;
-   }
-   .menu_area li:nth-child(10){
-     display: none;
-   }
-   
-   .menu-mobile{
-    display: block;
-    position: absolute;
-    z-index: 10;
-    left: 10px;
-   }
-   
-   .left_menu{
-       position: absolute;
-       top: 40px;
-       z-index: 9;
-       display:none;
-   }
-   
-   .menu-mobile-area{
-       height: 40px;
-       background-color: #080630;
-   }
-   .notification{
-       top: 62px;
-   }
-   .notification_count{
-       top: 62px;
-   } 
+        display: none;
+    }
+    .menu_area li:nth-child(10){
+        display: none;
+    }
+
+    .menu-mobile{
+        display: block;
+        position: absolute;
+        z-index: 10;
+        left: 10px;
+    }
+
+    .left_menu{
+        position: absolute;
+        top: 40px;
+        z-index: 9;
+        display:none;
+        background-color: #080630;
+    }
+
+    .menu-mobile-area{
+        height: 40px;
+        background-color: #080630;
+    }
+    .notification{
+        top: 62px;
+    }
+    .notification_count{
+        top: 62px;
+    } 
 }
 

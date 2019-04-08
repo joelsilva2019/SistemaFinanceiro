@@ -8,7 +8,7 @@
             <h2>Informaçoes da nota fiscal</h2>
             
             <label>Tipo de Operação da NF-e</label>
-            <select name="type_nfe">
+            <select name="type_op_nfe">
                 <option value="0">Entrada</option>
                 <option value="1">Saída</option>
             </select><br/><br/>
@@ -28,10 +28,9 @@
         
     <div class="issuer_nfe">
     <h2>Emitente</h2>
-    
+    <input style="width: 30%;float: left;margin-left: 10px;" type="text" name="issuer_cnpj" class="issuer_cnpj" placeholder="CNPJ"/>
     <input style="width: 30%;float: left;margin-left: 10px;;" type="text" name="issuer_social_reason" placeholder="Razão Social"/>
     <input style="width: 30%;float: left;margin-left: 10px;" type="text" name="issuer_trading_name" placeholder="Nome Fantasia"/>
-    <input style="width: 30%;float: left;margin-left: 10px;" type="text" name="issuer_cnpj" class="issuer_cnpj" placeholder="CNPJ"/>
     <input style="width: 30%;float: left;margin-left: 10px;" type="text" name="issuer_zipcode" placeholder="Cep"/>
     <input style="width: 30%;float: left;margin-left: 10px;margin-top: 5px;" type="text" name="issuer_address" placeholder="Endereço"/>
     <input style="width: 30%;float: left;margin-left: 10px;margin-top: 5px;" type="text" name="issuer_number" placeholder="Número"/>
@@ -42,7 +41,7 @@
     <input style="width: 30%;margin-left: 10px;margin-top: 5px;" type="text" name="issuer_email" placeholder="E-mail"/>
     <input style="width: 30%;margin-left: 10px;margin-top: 5px;" type="text" name="issuer_register" placeholder="Inscrição Estadual"/><br/><br/>
     <label> Regime Tributário: </label><br/>
-    <select name="crt" style="width: 50%;">
+    <select name="issuer_crt" style="width: 50%;">
         <option value="1">Simples Nacional</option>
         <option value="2">Simples Nacional – excesso de sublimite da receita bruta</option>
         <option value="3">Regime Normal</option>
@@ -51,9 +50,8 @@
         
     <div class="client_nfe">
     <h2>Destinatário</h2>
-    
-    <input style="width: 30%;float: left;margin-left: 10px;;" type="text" name="client_name" placeholder="Razão Social ou nome completo"/>
     <input style="width: 30%;float: left;margin-left: 10px;" type="text" name="client_cpf_cnpj" placeholder="CNPJ ou CPF"/>
+    <input style="width: 30%;float: left;margin-left: 10px;;" type="text" name="client_name" placeholder="Razão Social ou nome completo"/>
     <input style="width: 30%;float: left;margin-left: 10px;" type="text" name="client_zipcode" placeholder="Cep"/>
     <input style="width: 30%;float: left;margin-left: 10px;margin-top: 5px;" type="text" name="client_address" placeholder="Endereço"/>
     <input style="width: 30%;float: left;margin-left: 10px;margin-top: 5px;" type="text" name="client_number" placeholder="Número"/>
@@ -72,7 +70,33 @@
 <div class="prods_nfe">
     
     <h2>Produtos</h2>
-    
+    <table class="table-responsive" width="80%">
+        <tbody>
+        <tr>
+            <th>Nome</th>
+            <th>Código do Produto</th>
+            <th>Quantidade</th>
+            <th>Unidade</th>
+            <th>Preço</th>
+            <th>Subtotal</th>
+        </tr>
+        <?php foreach ($sale_info_prods['prods'] as $prod): ?>
+        <tr>
+            <td><?php echo $prod['name']; ?></td>
+            <td><?php echo $prod['prod_code']; ?></td>
+            <td><?php echo $prod['quant']; ?></td>
+            <td><?php echo $prod['sale_style']; ?></td>
+            <td><?php echo $prod['sale_price']; ?></td>
+            <td><?php echo ($prod['sale_price'] * $prod['quant']); ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+    </table>
+        <div class="total-price">
+            <span>Total da compra:</span>
+           R$ <?php echo number_format($sale_info_prods['info']['total_price'], 2, ',', '.'); ?>
+        </div>
+   
 </div>
     
         <input type="submit" value="Emitir nota fiscal"/><br/><br/>

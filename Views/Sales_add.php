@@ -29,7 +29,8 @@
         <legend>Adicionar Produto</legend>
         <input type="text" id="add_prod" data-type="search_inventory" autocomplete="off"/> 
     </fieldset><br/>
-    <table width="100%" border="0" id="table_prod">
+    <table width="100%" border="0" id="table_prod" class="table-responsive">
+        <tbody>
         <tr>
             <th>Nome</th>
             <th>Quant.</th>
@@ -37,6 +38,7 @@
             <th>Sub-Total</th>
             <th>Excluir</th>
         </tr>
+        </tbody>
     </table><br/><br/>
     
     <input type="submit" value="Adicionar"/>

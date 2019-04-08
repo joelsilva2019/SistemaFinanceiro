@@ -202,5 +202,18 @@ class SalesController extends Controller {
             header("Location: ".BASE_URL); 
         }
     }
+    
+    public function delete_prod($id, $id_sale){
+        
+        $users = new Users();
+        $users->setUser();
+        
+        if(!empty($id)){
+            $sales = new Sales();
+            $sales->deleteProd($id, $id_sale, $users->getCompany());
+            header("Location: ".BASE_URL."Sales/edit/".$id_sale);
+        }
+        
+    }
         
 }

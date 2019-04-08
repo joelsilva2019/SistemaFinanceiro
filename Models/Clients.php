@@ -34,8 +34,7 @@ class Clients extends Model {
                 $array[$c]['date_advance'] = date('d/m/Y H:i:s', strtotime($v['date_advance']));
             }
         }
-        
-        return $array; 
+        return $array;
     }
     
     public function getTotalAdvance($id_sale, $id_company){

@@ -61,7 +61,7 @@ class Sales extends Model {
         }
         
         
-        $sql = $this->db->prepare("SELECT sales_products.quant, sales_products.sale_price, inventory.name "
+        $sql = $this->db->prepare("SELECT sales_products.id_product, sales_products.quant, sales_products.sale_price, inventory.name, inventory.prod_code, inventory.sale_style "
                 . "FROM sales_products "
                 . "LEFT JOIN inventory ON inventory.id = sales_products.id_product "
                 . "WHERE sales_products.id_sale = :id_sale AND sales_products.id_company = :id_company");
@@ -340,6 +340,17 @@ class Sales extends Model {
             $array = $sql->fetchAll();
         }
         return $array;
+    }
+    
+    
+    public function deleteProd($id_prod, $id_sale, $id_company){
+        
+        $sql = $this->db->prepare("DELETE FROM sales_products WHERE id_sale = :id_sale AND id_product = :id_product AND id_company = :id_company");
+        $sql->bindValue(':id_sale', $id_sale);
+        $sql->bindValue(':id_product', $id_prod);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+        
     }
     
 }

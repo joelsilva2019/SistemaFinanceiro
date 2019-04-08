@@ -30,24 +30,6 @@ function deleteProd(obj){
     updateTotal();
 }
 
-function updateTotal(){
-    
-    var total = 0;
-    for(var q=0;q<$('.input_prod').length;q++){
-        
-        var quant = $('.input_prod').eq(q);
-        var price = quant.attr('data-price');
-        var subtotal = price * quant.val();
-        
-        total += subtotal;
-        
-    }
-    
-    $('input[name=total_price]').val(total);
-    
-}
-
-
 function addProduct(obj){
     $('#add_prod').val('');
     var id = $(obj).attr('data-id');
@@ -68,7 +50,8 @@ function addProduct(obj){
     
            $('#table_prod').append(tr);
            
-    }  
+    } 
+    
     updateTotal();
     
 }
