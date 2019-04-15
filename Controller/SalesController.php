@@ -129,8 +129,9 @@ class SalesController extends Controller {
           
                 $status = addslashes($_POST['status']);
                 $status_sale = addslashes($_POST['status_sale']); 
+                $quant = $_POST['quant'];
                 
-                $sales->changeStatus($status,$status_sale, $id,$users->getCompany());
+                $sales->edit($status,$status_sale, $id,$users->getCompany(), $quant);
                 header("Location: ".BASE_URL."Sales");
                 
             }

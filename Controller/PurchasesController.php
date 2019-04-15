@@ -115,7 +115,9 @@ class PurchasesController extends Controller {
             
             if(isset($_POST['status']) && $data['purchases_edit'] == true){
                 $status = addslashes($_POST['status']);
-                $purchases->changeStatus($status, $id,$users->getCompany());
+                $quant = $_POST['quant'];
+                
+                $purchases->edit($status, $quant, $id,$users->getCompany());
                 header("Location: ".BASE_URL."Purchases");
                 
             }
@@ -177,6 +179,20 @@ class PurchasesController extends Controller {
         
        } else {
             header("Location: ".BASE_URL); 
+        }
+    }
+    
+    public function delete_prod($id_prod, $id_purchase){
+        
+        $users = new Users();
+        $users->setUser();
+        
+        if(!empty($id_prod)){
+         $purchases = new Purchases();
+         $purchases->delete($id_prod, $id_purchase, $users->getCompany());
+         header("Location: ".BASE_URL."Purchases/edit/".$id_purchase);
+        } else {
+          header("Location: ".BASE_URL);  
         }
     }
 }

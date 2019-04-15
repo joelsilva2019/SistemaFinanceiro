@@ -204,5 +204,21 @@ class AjaxController extends Model {
 
         echo json_encode($data);
     }
+    
+    
+    public function add_prod(){ 
+        $users = new Users();
+        $users->setUser();
+        
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            
+            $id = addslashes($_POST['id']);   
+            $id_sale = addslashes($_POST['id_sale']);
+            $id_price = addslashes($_POST['price']);
+            
+            
+        }
+        
+    }
 
 }

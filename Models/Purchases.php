@@ -72,7 +72,7 @@ class Purchases extends Model {
         }
         
         
-        $sql = $this->db->prepare("SELECT purchases_products.quant, purchases_products.purchase_price, inventory.name "
+        $sql = $this->db->prepare("SELECT purchases_products.id_product, purchases_products.quant, purchases_products.purchase_price, inventory.name "
                 . "FROM purchases_products "
                 . "LEFT JOIN inventory ON inventory.id = purchases_products.id_product "
                 . "WHERE purchases_products.id_purchase = :id_purchase AND purchases_products.id_company = :id_company");
@@ -128,15 +128,66 @@ class Purchases extends Model {
         return $array;
     }
     
-    public function changeStatus($status, $id,$id_company){
-        
+    public function edit($status, $quant, $id, $id_company) {
+
         $sql = $this->db->prepare("UPDATE purchases SET status = :status WHERE id = :id AND id_company = :id_company");
         $sql->bindValue(':status', $status);
         $sql->bindValue(':id', $id);
         $sql->bindValue(':id_company', $id_company);
         $sql->execute();
+
+        $total_price = 0;
+        
+        if (count($quant) > 0) {
+            foreach ($quant as $id_prod => $quant_prod) {
+                $sql = $this->db->prepare("SELECT price FROM inventory WHERE id = :id AND id_company = :id_company");
+                $sql->bindValue(':id', $id_prod);
+                $sql->bindValue(':id_company', $id_company);
+                $sql->execute();
+                
+                if($sql->rowCount() > 0){
+                    $row = $sql->fetch();
+                    $price = $row['price'];
+                    $sql = $this->db->prepare("SELECT id FROM purchases_products WHERE id_purchase = :id_purchase AND id_product = :id_product AND id_company = :id_company");
+                    $sql->bindValue(':id_purchase', $id);
+                    $sql->bindValue(':id_product', $id_prod);
+                    $sql->bindValue(':id_company', $id_company);
+                    $sql->execute();
+                    
+                    if($sql->rowCount() > 0){
+                        
+                        $sql = $this->db->prepare("UPDATE purchases_products SET quant = :quant, purchase_price = :purchase_price WHERE id_product = :id_product AND id_purchase = :id_purchase AND id_company = :id_company");
+                        $sql->bindValue(':quant', $quant_prod);
+                        $sql->bindValue(':purchase_price', $price); 
+                        $sql->bindValue(':id_purchase', $id);
+                        $sql->bindValue(':id_product', $id_prod);
+                        $sql->bindValue(':id_company', $id_company);
+                        $sql->execute();
+                        
+                        $total_price += $quant_prod * $price;
+                        
+                    } else {
+                        
+                        $sql = $this->db->prepare("INSERT INTO purchases_products SET id_company = :id_company, id_purchase = :id_purchase, id_product = :id_product, quant = :quant, purchase_price = :purchase_price");
+                        $sql->bindValue(':id_company', $id_company);
+                        $sql->bindValue(':id_purchase', $id);
+                        $sql->bindValue(':id_product', $id_prod);
+                        $sql->bindValue(':quant', $quant_prod);
+                        $sql->bindValue(':purchase_price', $price);
+                        $sql->execute();
+                        $total_price += $quant_prod * $price;
+                    }
+                } 
+            }
+        }
+        
+        $sql = $this->db->prepare("UPDATE purchases SET total_price = :total_price WHERE id = :id AND id_company = :id_company");  
+        $sql->bindValue(':total_price', $total_price);
+        $sql->bindValue(':id', $id);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
     }
-    
+
     function getExpansesList($period1, $period2, $id_company){
         $array = array();
         $currentDay = $period1;
@@ -287,6 +338,34 @@ class Purchases extends Model {
         $sql->bindValue(":id", $id_purchase);
         $sql->bindValue(":id_company", $id_company);
         $sql->execute();
+    }
+    
+    public function delete($id_prod, $id_purchase, $id_company){
+        
+        $total_price = 0;
+
+        $sql = $this->db->prepare("SELECT purchase_price FROM purchases_products WHERE id_purchase = :id_purchase AND id_product = :id_product AND id_company = :id_company");
+        $sql->bindValue(':id_purchase', $id_purchase);
+        $sql->bindValue(':id_product', $id_prod);
+        $sql->bindValue(':id_company', $id_company);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $row = $sql->fetch();
+            $total_price = $row['purchase_price'];
+
+            $sql = $this->db->prepare("DELETE FROM purchases_products WHERE id_purchase = :id_purchase AND id_product = :id_product AND id_company = :id_company");
+            $sql->bindValue(':id_purchase', $id_purchase);
+            $sql->bindValue(':id_product', $id_prod);
+            $sql->bindValue(':id_company', $id_company);
+            $sql->execute();
+
+            $sql = $this->db->prepare("UPDATE purchases SET total_price = total_price - $total_price WHERE id = :id AND id_company = :id_company");
+            $sql->bindValue(':id', $id_purchase);
+            $sql->bindValue(':id_company', $id_company);
+            $sql->execute();
+        }
+        
     }
 
     

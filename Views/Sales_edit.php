@@ -80,21 +80,29 @@ R$ <?php echo number_format($sales_info['info']['total_price'], 2, ',', '.'); ?>
         <th>Preço Total</th>
         <th>Ações</th>
     </tr>
-    <?php foreach ($sales_info['prods'] as $prod): ?>
+    <?php
+    if(!empty($sales_info['prods'])):
+    foreach ($sales_info['prods'] as $prod): ?>
         <tr>
             <td><?php echo $prod['name']; ?></td>
-            <td><?php echo $prod['quant']; ?></td>
+            <td><input type="number" name="quant[<?php echo $prod['id_product']; ?>]" value="<?php echo $prod['quant']; ?>" class='input_prod' onchange='updateSubtotal(this)' data-price='<?php echo $prod['sale_price']; ?>'/></td>
             <td><?php echo number_format($prod['sale_price'], 2, ',', '.'); ?></td>
-            <td><?php echo number_format($prod['sale_price'] * $prod['quant'], 2, ',', '.'); ?></td>
+            <td class='sub_total' ><?php echo number_format($prod['sale_price'] * $prod['quant'], 2, ',', '.'); ?></td>
             <td width="80"><a href="<?php echo BASE_URL; ?>Sales/delete_prod/<?php echo $prod['id_product']; ?>/<?php echo $sales_info['info']['id']; ?>" class="button button_small">Excluir</a></td>
         </tr>
 
 
-    <?php endforeach; ?>
+    <?php endforeach;
+     else: 
+    ?>
+    <div class="warn">Adicione prdutos na venda !!</div>
+    <?php
+     endif;
+    ?>
     </tbody>
 </table><br/><br/>
   <?php if ($sales_edit): ?>    
-        <input type="submit" value="Salvar"/>
+<input type="submit" value="Salvar" class="save"/>
     <?php endif; ?>
 </form> 
 <script type="text/javascript" src="<?php echo BASE_URL; ?>Assets/js/jquery.mask.js"></script> 
