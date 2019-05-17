@@ -1,2 +1,2 @@
 # SistemaFinanceiro
-Essa e o meu primeiro sitema 
+Sistema completo para pequenas e medias empresas.
